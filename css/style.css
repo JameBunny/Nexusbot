@@ -1,5 +1,5 @@
 /* =============================================
-   NEXUS BOT - MAIN STYLESHEET (MOBILE OPTIMIZED)
+   NEXUS BOT - MAIN STYLESHEET (MOBILE OPTIMIZED FINAL)
    ============================================= */
 
 :root {
@@ -29,7 +29,7 @@
   --radius-lg: 24px;
   --radius-full: 50%;
   --font-primary: 'Inter', 'Noto Sans Thai', sans-serif;
-  --nav-height: 70px; /* Define fixed nav height */
+  --nav-height: 70px;
 }
 
 *,
@@ -42,7 +42,7 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: var(--nav-height); /* Fix scroll anchor */
+  scroll-padding-top: var(--nav-height);
 }
 
 body {
@@ -91,7 +91,7 @@ main {
   left: 0;
   right: 0;
   z-index: 1000;
-  background: rgba(5, 5, 8, 0.85); /* Darker for better contrast */
+  background: rgba(5, 5, 8, 0.95); /* Increased opacity for better visibility */
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--border-color);
@@ -266,7 +266,7 @@ main {
   background: none;
   border: none;
   cursor: pointer;
-  z-index: 1001;
+  z-index: 2001; /* Ensure hamburger is above the mobile menu */
 }
 
 .hamburger span {
@@ -1380,124 +1380,146 @@ main {
 }
 
 /* =============================================
-   RESPONSIVE - MOBILE (FIXED VERSION)
+   RESPONSIVE - MOBILE (FIXED - CLEANER MENU & FOOTER)
    ============================================= */
 @media (max-width: 768px) {
-  /* จัดการ Navbar ให้เป็นแบบ Full Screen และพื้นหลังทึบ */
+
+  /* --- 1. Navbar & Menu Fixes --- */
   .nav-menu {
-    position: fixed;
+    position: fixed !important;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
+    width: 100%;
+    height: 100vh; /* Full screen height */
+    background: #050508 !important; /* Solid black background, no transparency */
+    display: flex;
     flex-direction: column;
-    justify-content: flex-start; /* เริ่มเรียงจากด้านบน */
-    align-items: center;
-    background: var(--bg-dark); /* ใช้สีพื้นหลังทึบ ไม่โปร่งแสง */
-    padding: 120px 30px 40px; /* เพิ่ม Padding ด้านบนหลบ Header */
-    gap: 20px;
+    justify-content: center; /* Center items vertically */
+    align-items: center;     /* Center items horizontally */
+    gap: 30px;
+    z-index: 2000 !important; /* High z-index to be on top of everything */
     transform: translateX(100%);
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    z-index: 998; /* อยู่ใต้ Hamburger/Logo เล็กน้อย */
-    overflow-y: auto; /* เผื่อเมนูยาวเกินจอ */
+    transition: transform 0.3s ease-in-out;
+    padding: 0 !important;
+    margin: 0 !important;
   }
 
   .nav-menu.active {
-    transform: translateX(0);
+    transform: translateX(0) !important;
   }
 
-  /* ปรับขนาดตัวหนังสือเมนูให้อ่านง่าย */
   .nav-link {
-    width: 100%;
-    padding: 15px;
-    font-size: 1.3rem;
-    font-weight: 600;
+    font-size: 1.5rem !important;
+    color: #ffffff !important;
+    width: auto !important;
+    border: none !important;
+    padding: 10px 20px !important;
     text-align: center;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05); /* เส้นคั่นบางๆ */
   }
 
-  .nav-link.active {
-    background: transparent;
-    color: var(--primary);
-    border-bottom-color: var(--primary);
-  }
-  
-  .nav-link.active::after { display: none; }
-
-  /* จัดการปุ่ม Actions (ภาษา/Invite) */
-  .nav-actions { 
-    gap: 10px;
-    margin-right: 5px;
-    z-index: 1002; /* ให้อยู่เหนือเมนู */
-  }
-  
-  /* ซ่อนปุ่ม Invite ในมือถือเพื่อให้มีที่ว่าง (ปุ่มภาษาเก็บไว้) */
-  .nav-actions .btn { display: none; }
-  
-  /* Hamburger Menu */
-  .hamburger { 
-    display: flex; 
-    z-index: 1002; /* อยู่ชั้นบนสุด */
+  .nav-link:hover, .nav-link.active {
+    color: var(--primary) !important;
+    background: transparent !important;
   }
 
-  /* Hero Section ปรับระยะห่าง */
+  /* Hamburger Button - Must be ABOVE the menu */
+  .hamburger {
+    display: flex !important;
+    position: relative;
+    z-index: 2001 !important; /* Higher than menu (2000) */
+  }
+
+  /* Hide extra navbar buttons on mobile */
+  .nav-actions .btn, 
+  .language-selector { 
+    display: none !important; 
+  }
+
+  /* --- 2. Hero Section Adjustments --- */
   .hero {
-    padding: 140px 20px 60px; /* ดันลงมาไม่ให้ชน Header */
-    min-height: auto;
-    text-align: center;
+    padding-top: 120px !important; /* Space for fixed navbar */
+    padding-bottom: 60px !important;
+    min-height: auto !important;
+    flex-direction: column;
+  }
+  
+  .hero-content {
+    max-width: 100% !important;
+    padding: 0 15px !important;
   }
 
-  .hero-logo {
-    width: 100px;
-    height: 100px;
-    margin-bottom: 20px;
-  }
-
-  .hero-title {
-    font-size: 2.2rem;
-    line-height: 1.2;
-  }
-
-  .hero-subtitle {
-    font-size: 1rem;
-    margin-bottom: 30px;
-  }
-
-  /* Stats เรียงแนวตั้ง */
   .hero-stats {
     flex-direction: column;
-    gap: 20px;
-    padding: 20px;
+    gap: 15px;
     width: 100%;
-    background: rgba(255, 255, 255, 0.03);
+    padding: 20px;
   }
 
-  .stat-number { font-size: 2rem; }
-
-  /* Buttons */
   .hero-buttons {
     flex-direction: column;
     width: 100%;
-    gap: 15px;
+    max-width: 300px;
+    margin: 0 auto;
+    gap: 15px !important;
+  }
+
+  .hero-buttons .btn {
+    width: 100% !important;
+  }
+
+  /* --- 3. Shop & Sticker Fixes (Center Alignment) --- */
+  .sticker-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 30px !important;
+  }
+
+  .sticker-card {
+    width: 100% !important;
+    max-width: 280px !important;
+    margin: 0 auto !important;
+  }
+
+  .pricing-grid {
+    grid-template-columns: 1fr !important;
+    padding: 0 10px;
+  }
+
+  /* --- 4. Footer Fixes (Spacing & Alignment) --- */
+  .footer {
+    padding: 60px 0 30px !important;
+    text-align: center !important;
+  }
+
+  .footer-content {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 50px !important; /* More space between footer sections */
+    align-items: center !important;
+  }
+
+  .footer-brand, 
+  .footer-links, 
+  .footer-social {
+    align-items: center !important;
+    text-align: center !important;
+    width: 100%;
+  }
+
+  .footer-brand p {
+    margin: 0 auto !important;
+    max-width: 100% !important;
   }
   
-  .hero-buttons .btn { width: 100%; }
-
-  .scroll-indicator { display: none; }
-
-  /* Features & Content Cards */
-  .features-grid, 
-  .pricing-grid, 
-  .footer-content { 
-    grid-template-columns: 1fr; 
-    gap: 30px;
+  .social-links {
+    justify-content: center !important;
   }
   
-  .feature-card { padding: 25px 20px; }
-  
-  .footer-content { text-align: center; justify-items: center; }
-  .footer-brand, .footer-links, .footer-social { align-items: center; text-align: center; }
-  .footer-brand p { max-width: 100%; }
+  /* --- 5. Features Grid Single Column --- */
+  .features-grid {
+    grid-template-columns: 1fr !important;
+  }
 }
 
 /* =============================================
@@ -1515,8 +1537,6 @@ main {
   
   .command-search input { padding: 14px 18px 14px 45px; }
   .command-search i { left: 15px; }
-  
-  .sticker-card { width: 100%; }
 }
 
 /* =============================================
