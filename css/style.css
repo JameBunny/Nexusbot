@@ -1376,96 +1376,235 @@ main {
 }
 
 /* =============================================
-   RESPONSIVE - MOBILE
+   RESPONSIVE - MOBILE OPTIMIZED (FINAL FIX)
+   วางส่วนนี้ไว้ล่างสุดของไฟล์ CSS เพื่อ Override ค่าเดิม
    ============================================= */
+
 @media (max-width: 768px) {
+
+  /* --- 1. Navbar & Navigation (เมนูมือถือ) --- */
+  .nav-container {
+    padding: 0 20px !important;
+    justify-content: space-between;
+  }
+
+  /* ปุ่ม Hamburger */
+  .hamburger {
+    display: flex !important; /* บังคับโชว์ */
+    z-index: 2001;
+    margin-left: 10px;
+  }
+
+  /* เมนูหลัก (Slide Menu) */
   .nav-menu {
     position: fixed;
     top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    right: 0; /* เปลี่ยนเป็น right เพื่อ Slide จากขวา */
+    width: 100%;
+    height: 100vh;
+    background: rgba(5, 5, 8, 0.98) !important;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: rgba(5, 5, 8, 0.98);
-    backdrop-filter: blur(20px);
-    padding: 80px 30px 30px;
-    gap: 15px;
-    transform: translateX(100%);
-    transition: var(--transition-normal);
-    z-index: 999;
+    padding-top: 60px !important; /* เผื่อพื้นที่ด้านบน */
+    gap: 30px;
+    transform: translateX(100%); /* ซ่อนไปทางขวา */
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 2000;
+    box-shadow: -10px 0 30px rgba(0,0,0,0.5);
   }
 
   .nav-menu.active {
-    transform: translateX(0);
+    transform: translateX(0); /* เลื่อนออกมา */
   }
 
   .nav-link {
+    font-size: 1.5rem !important;
+    color: var(--text-primary) !important;
+    font-weight: 700;
     width: 100%;
-    padding: 15px;
-    font-size: 1.2rem;
     text-align: center;
   }
 
-  .nav-link.active::after { display: none; }
-
-  .nav-actions { gap: 10px; }
-  .nav-actions .btn { display: none; }
-  .hamburger { display: flex; }
-
-  .hero {
-    padding: 120px 20px 60px;
-    min-height: auto;
+  .nav-link.active {
+    background: transparent;
+    color: var(--primary) !important;
   }
 
-  .hero-logo {
-    width: 120px;
-    height: 120px;
+  .nav-link.active::after {
+    display: none; /* ซ่อนขีดเส้นใต้ในมือถือ */
+  }
+
+  /* จัดการปุ่มด้านขวาบน (Actions) */
+  .nav-actions {
+    margin-left: auto; /* ดันไปชิดขวา */
+    gap: 10px;
+  }
+
+  /* ซ่อนปุ่ม Invite บน Header (ให้ไปกดในเนื้อหาแทน) */
+  .nav-actions .btn {
+    display: none !important;
+  }
+
+  /* ปุ่มเปลี่ยนภาษา */
+  .language-selector {
+    display: block !important;
+  }
+  
+  .lang-btn {
+    padding: 6px 10px !important;
+    font-size: 0.85rem !important;
+    background: rgba(255,255,255,0.05);
+  }
+
+  /* --- 2. Hero Section (หน้าแรก) --- */
+  .hero {
+    padding-top: 130px !important;
+    padding-bottom: 60px !important;
+    min-height: auto;
+    text-align: center;
+  }
+
+  .hero-content {
+    padding: 0 10px;
   }
 
   .hero-title {
-    font-size: 2.8rem;
+    font-size: clamp(2.2rem, 8vw, 3rem);
+    line-height: 1.2;
   }
 
   .hero-stats {
-    gap: 30px;
-    flex-direction: column;
-    padding: 30px;
-    width: 100%;
+    flex-direction: row; /* เรียงแนวนอนเหมือนเดิม */
+    flex-wrap: wrap;
+    gap: 20px 30px; /* เว้นระยะห่าง */
+    padding: 15px;
+    justify-content: center;
+  }
+  
+  .stat-number {
+     font-size: 2rem;
   }
 
-  .stat-number { font-size: 2.2rem; }
-
+  /* ปุ่มใน Hero เรียงแนวตั้งให้กว้างกดง่าย */
   .hero-buttons {
     flex-direction: column;
     width: 100%;
-    max-width: 350px;
+    max-width: 300px;
     margin: 0 auto;
+    gap: 15px !important;
+  }
+
+  .hero-buttons .btn {
+    width: 100% !important;
+    justify-content: center;
+    padding: 14px 20px;
+  }
+
+  /* --- 3. Shop & Stickers (จัดระเบียบ 2 คอลัมน์) --- */
+  /* เปลี่ยนจาก Flex เป็น Grid เพื่อความสวยงามแบบแอป Shopping */
+  .sticker-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important; /* 2 คอลัมน์เท่ากัน */
+    gap: 15px !important;
+    padding: 0 5px;
+  }
+
+  .sticker-card {
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 15px !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+  }
+
+  .sticker-card img {
+    width: 100% !important;
+    max-width: 100px; /* จำกัดขนาดรูปไม่ให้ใหญ่เกิน */
+    aspect-ratio: 1/1;
+    margin-bottom: 10px !important;
+  }
+
+  .sticker-card span {
+    font-size: 0.9rem !important;
+    line-height: 1.3;
+  }
+
+  /* Pricing Cards */
+  .pricing-grid {
+    grid-template-columns: 1fr !important; /* เรียงลงมาทีละอัน */
+    padding: 0 10px;
   }
   
-  .hero-buttons .btn { width: 100%; }
+  .pricing-card.featured {
+    transform: scale(1); /* ยกเลิกการขยายในมือถือ */
+    order: -1; /* ให้ตัว Featured ขึ้นก่อนเสมอ */
+    border-color: var(--primary);
+  }
 
-  .scroll-indicator { display: none; }
+  /* --- 4. Features & Grid ทั่วไป --- */
+  .features-grid, 
+  .commands-grid {
+    grid-template-columns: 1fr !important;
+    padding: 0 10px;
+  }
 
-  .features-grid { grid-template-columns: 1fr; }
-  .feature-card { padding: 30px 20px; }
-  
-  .platforms-logos { gap: 40px; }
-  
-  .pricing-grid { grid-template-columns: 1fr; }
-  .pricing-card.featured { transform: none; }
+  .feature-card, 
+  .command-card {
+    padding: 25px 20px;
+  }
 
-  .footer-content { grid-template-columns: 1fr; gap: 40px; }
+  /* --- 5. Footer (จัดกึ่งกลาง) --- */
+  .footer {
+    padding: 50px 0 30px !important;
+    text-align: center !important;
+  }
+
+  .footer-content {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    align-items: center;
+  }
+
+  .footer-brand, 
+  .footer-links, 
+  .footer-social {
+    width: 100%;
+    align-items: center !important;
+    text-align: center !important;
+  }
+
+  .footer-brand p {
+    margin: 0 auto 15px; /* จัดคำอธิบายให้อยู่กลาง */
+  }
+
+  .social-links {
+    justify-content: center !important;
+    margin-top: 10px;
+  }
+
+  /* --- 6. อื่นๆ --- */
+  .page-header h1 {
+    font-size: 2.2rem;
+  }
+
+  .command-search input {
+    font-size: 16px; /* ป้องกัน iOS ซูมตอนกดพิมพ์ */
+  }
 }
 
-/* =============================================
-   RESPONSIVE - SMALL MOBILE
-   ============================================= */
-@media (max-width: 480px) {
-  .nav-container { height: 65px; padding: 0 15px; }
-  .nav-logo { font-size: 1.3rem; }
-  .nav-logo img { width: 36px; height: 36px; }
+/* เก็บส่วน Small Mobile ไว้สำหรับจอเล็กมากๆ */
+@media (max-width: 380px) {
+  .hero-title { font-size: 1.8rem; }
+  .sticker-grid { gap: 10px !important; } /* จอเล็กมากลดช่องว่าง */
+  .nav-logo span { display: none; } /* ซ่อนชื่อ text logo ถ้าจอเล็กจัด */
+  .nav-logo img { display: block; }
   
   .hero-title { font-size: 2.2rem; }
   .hero-subtitle { font-size: 1rem; }
