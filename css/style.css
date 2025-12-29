@@ -91,7 +91,7 @@ main {
   left: 0;
   right: 0;
   z-index: 1000;
-  background: rgba(5, 5, 8, 0.95); /* Increased opacity for better visibility */
+  background: rgba(5, 5, 8, 0.85); /* Darker for better contrast */
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--border-color);
@@ -266,7 +266,7 @@ main {
   background: none;
   border: none;
   cursor: pointer;
-  z-index: 2001; /* Ensure hamburger is above the mobile menu */
+  z-index: 1001;
 }
 
 .hamburger span {
@@ -1385,23 +1385,48 @@ main {
 @media (max-width: 768px) {
 
   /* --- 1. Navbar & Menu Fixes --- */
+  .nav-container {
+    padding: 0 20px !important;
+  }
+
+  /* ปุ่มเปลี่ยนภาษา: ให้แสดงผลแต่จัดตำแหน่งใหม่ */
+  .language-selector {
+    display: block !important; /* บังคับแสดง */
+    margin-right: 10px;
+  }
+  
+  /* ปรับปุ่มภาษาให้เล็กลงหน่อยในมือถือ */
+  .lang-btn {
+    padding: 6px 10px !important;
+    font-size: 0.8rem !important;
+  }
+  
+  .lang-btn span {
+    display: inline-block !important; /* โชว์ตัวหนังสือ TH/EN */
+  }
+
+  /* ซ่อนแค่ปุ่ม Invite (ปุ่มสีม่วง) เพื่อประหยัดที่ */
+  .nav-actions .btn-primary { 
+    display: none !important; 
+  }
+
+  /* เมนู Full Screen */
   .nav-menu {
     position: fixed !important;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100vh; /* Full screen height */
-    background: #050508 !important; /* Solid black background, no transparency */
+    height: 100vh;
+    background: #050508 !important;
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Center items vertically */
-    align-items: center;     /* Center items horizontally */
-    gap: 30px;
-    z-index: 2000 !important; /* High z-index to be on top of everything */
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    z-index: 2000 !important;
     transform: translateX(100%);
     transition: transform 0.3s ease-in-out;
     padding: 0 !important;
-    margin: 0 !important;
   }
 
   .nav-menu.active {
@@ -1409,117 +1434,101 @@ main {
   }
 
   .nav-link {
-    font-size: 1.5rem !important;
-    color: #ffffff !important;
-    width: auto !important;
+    font-size: 1.4rem !important;
+    color: #fff !important;
     border: none !important;
-    padding: 10px 20px !important;
-    text-align: center;
   }
 
-  .nav-link:hover, .nav-link.active {
-    color: var(--primary) !important;
-    background: transparent !important;
-  }
-
-  /* Hamburger Button - Must be ABOVE the menu */
   .hamburger {
-    display: flex !important;
-    position: relative;
-    z-index: 2001 !important; /* Higher than menu (2000) */
+    z-index: 2001 !important;
+    margin-left: 0 !important;
   }
 
-  /* Hide extra navbar buttons on mobile */
-  .nav-actions .btn, 
-  .language-selector { 
-    display: none !important; 
-  }
-
-  /* --- 2. Hero Section Adjustments --- */
-  .hero {
-    padding-top: 120px !important; /* Space for fixed navbar */
-    padding-bottom: 60px !important;
-    min-height: auto !important;
-    flex-direction: column;
-  }
-  
-  .hero-content {
-    max-width: 100% !important;
-    padding: 0 15px !important;
-  }
-
-  .hero-stats {
-    flex-direction: column;
-    gap: 15px;
-    width: 100%;
-    padding: 20px;
-  }
-
-  .hero-buttons {
-    flex-direction: column;
-    width: 100%;
-    max-width: 300px;
-    margin: 0 auto;
-    gap: 15px !important;
-  }
-
-  .hero-buttons .btn {
-    width: 100% !important;
-  }
-
-  /* --- 3. Shop & Sticker Fixes (Center Alignment) --- */
+  /* --- 2. แก้ไขหน้า Shop สติ๊กเกอร์ (เรียง 2 แถวสวยๆ) --- */
   .sticker-grid {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    gap: 30px !important;
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important; /* แบ่งเป็น 2 คอลัมน์ ซ้าย-ขวา */
+    gap: 15px !important;
+    width: 100%;
+    padding: 0 10px;
   }
 
   .sticker-card {
     width: 100% !important;
-    max-width: 280px !important;
-    margin: 0 auto !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 15px !important; /* ลด padding ให้ไม่เทอะทะ */
+    height: 100%; /* สูงเท่ากัน */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 
+  .sticker-card img {
+    width: 80px !important; /* ลดขนาดรูปให้พอดีมือถือ */
+    height: 80px !important;
+    margin-bottom: 10px !important;
+  }
+
+  .sticker-card span {
+    font-size: 0.85rem !important;
+  }
+
+  /* Pricing Cards */
   .pricing-grid {
     grid-template-columns: 1fr !important;
+    gap: 20px !important;
     padding: 0 10px;
   }
 
-  /* --- 4. Footer Fixes (Spacing & Alignment) --- */
+  /* --- 3. แก้ไข Footer (จัดระเบียบใหม่) --- */
   .footer {
-    padding: 60px 0 30px !important;
+    padding: 40px 0 20px !important;
     text-align: center !important;
   }
 
   .footer-content {
     display: flex !important;
     flex-direction: column !important;
-    gap: 50px !important; /* More space between footer sections */
+    gap: 30px !important; /* ลดระยะห่างไม่ให้ยาวเกินไป */
     align-items: center !important;
+    margin-bottom: 30px !important;
   }
 
-  .footer-brand, 
-  .footer-links, 
-  .footer-social {
+  .footer-brand, .footer-links, .footer-social {
     align-items: center !important;
     text-align: center !important;
     width: 100%;
   }
 
-  .footer-brand p {
-    margin: 0 auto !important;
-    max-width: 100% !important;
-  }
-  
+  /* จัดไอคอนโซเชียลให้อยู่กึ่งกลาง */
   .social-links {
     justify-content: center !important;
+    gap: 15px !important;
+  }
+
+  .footer-bottom {
+    font-size: 0.75rem !important;
+    padding-top: 20px !important;
+    opacity: 0.7;
+  }
+
+  /* --- 4. Hero Section --- */
+  .hero {
+    padding-top: 100px !important;
+    flex-direction: column;
+    min-height: auto !important;
   }
   
-  /* --- 5. Features Grid Single Column --- */
-  .features-grid {
-    grid-template-columns: 1fr !important;
+  .hero-buttons {
+    flex-direction: column;
+    width: 100%;
+    max-width: 320px;
+    gap: 15px !important;
   }
+  
+  .hero-buttons .btn { width: 100% !important; }
 }
 
 /* =============================================
