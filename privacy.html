@@ -5,11 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Privacy Policy - Nexus Bot</title>
   <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min. css">
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;700&family=Inter: wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <!-- Navbar -->
   <nav class="navbar">
     <div class="nav-container">
       <a href="index.html" class="nav-logo">
@@ -38,28 +37,24 @@
         <a href="https://discord.com/oauth2/authorize?client_id=YOUR_BOT_ID" class="btn btn-primary" data-i18n="nav.invite">เชิญบอท</a>
       </div>
       <button class="hamburger" id="hamburger" type="button">
-        <span></span>
-        <span></span>
-        <span></span>
+        <span></span><span></span><span></span>
       </button>
     </div>
   </nav>
 
   <main>
-    <!-- Page Header -->
     <section class="page-header">
       <div class="container">
         <h1 class="animate-fade-up"><i class="fas fa-shield-alt"></i> <span data-i18n="privacy. title">นโยบายความเป็นส่วนตัว</span></h1>
-        <p class="animate-fade-up" data-i18n="privacy.lastUpdated">อัปเดตล่าสุด:  29 ธันวาคม 2025</p>
+        <p class="animate-fade-up" data-i18n="privacy.lastUpdated">อัปเดตล่าสุด: 29 ธันวาคม 2025</p>
       </div>
     </section>
 
-    <!-- Privacy Content -->
     <section class="legal-section">
       <div class="container">
         <div class="legal-content animate-on-scroll">
           <div class="legal-block">
-            <h2 data-i18n="privacy. section1Title">1. ข้อมูลที่เราเก็บรวบรวม</h2>
+            <h2 data-i18n="privacy.section1Title">1. ข้อมูลที่เราเก็บรวบรวม</h2>
             <p data-i18n="privacy.section1Content">เราเก็บรวบรวมข้อมูลดังต่อไปนี้: </p>
             <ul>
               <li data-i18n="privacy.section1Item1"><strong>Server ID:</strong> เพื่อจัดเก็บการตั้งค่าของเซิร์ฟเวอร์</li>
@@ -106,7 +101,7 @@
             <p data-i18n="privacy.section6Content">คุณมีสิทธิ์: </p>
             <ul>
               <li data-i18n="privacy.section6Item1">ขอดูข้อมูลที่เราเก็บเกี่ยวกับคุณ</li>
-              <li data-i18n="privacy.section6Item2">ขอให้ลบข้อมูลของคุณ</li>
+              <li data-i18n="privacy. section6Item2">ขอให้ลบข้อมูลของคุณ</li>
               <li data-i18n="privacy.section6Item3">ขอแก้ไขข้อมูลที่ไม่ถูกต้อง</li>
             </ul>
           </div>
@@ -133,22 +128,21 @@
       </div>
     </section>
 
-    <!-- Footer include -->
     <div id="footer-slot"></div>
   </main>
 
   <script>
     fetch('footer.html')
-      .then(r => r.text())
-      .then(html => {
+      .then(function(response) { return response.text(); })
+      .then(function(html) {
         document.getElementById('footer-slot').innerHTML = html;
         if (typeof applyTranslations === 'function') {
-          const lang = localStorage.getItem('nexus-language') || 'th';
+          var lang = localStorage.getItem('nexus-language') || 'th';
           applyTranslations(lang);
         }
       });
   </script>
-  <script src="js/i18n. js"></script>
+  <script src="js/i18n.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>
