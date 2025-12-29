@@ -4,12 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Commands - Nexus Bot</title>
+  
+  <link rel="icon" href="https://i.imgur.com/OWQKhLp.jpeg" type="image/jpeg">
+  <link rel="apple-touch-icon" href="https://i.imgur.com/OWQKhLp.jpeg">
+
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2? family=Noto+Sans+Thai: wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <!-- Navbar -->
   <nav class="navbar">
     <div class="nav-container">
       <a href="index.html" class="nav-logo">
@@ -17,7 +20,7 @@
         <span>Nexus</span>
       </a>
       <ul class="nav-menu" id="navMenu">
-        <li><a href="index.html" class="nav-link" data-i18n="nav. home">หน้าแรก</a></li>
+        <li><a href="index.html" class="nav-link" data-i18n="nav.home">หน้าแรก</a></li>
         <li><a href="commands.html" class="nav-link active" data-i18n="nav.commands">คำสั่ง</a></li>
         <li><a href="shop.html" class="nav-link" data-i18n="nav.shop">ร้านค้า</a></li>
         <li><a href="terms.html" class="nav-link" data-i18n="nav.terms">ข้อกำหนด</a></li>
@@ -38,15 +41,12 @@
         <a href="https://discord.com/oauth2/authorize?client_id=YOUR_BOT_ID" class="btn btn-primary" data-i18n="nav.invite">เชิญบอท</a>
       </div>
       <button class="hamburger" id="hamburger" type="button">
-        <span></span>
-        <span></span>
-        <span></span>
+        <span></span><span></span><span></span>
       </button>
     </div>
   </nav>
 
   <main>
-    <!-- Page Header -->
     <section class="page-header">
       <div class="container">
         <h1 class="animate-fade-up"><i class="fas fa-terminal"></i> <span data-i18n="commands.title">คำสั่งบอท</span></h1>
@@ -54,16 +54,13 @@
       </div>
     </section>
 
-    <!-- Commands Content -->
     <section class="commands-section">
       <div class="container">
-        <!-- Search -->
         <div class="command-search animate-on-scroll">
           <i class="fas fa-search"></i>
-          <input type="text" id="commandSearch" data-i18n-placeholder="commands.search" placeholder="ค้นหาคำสั่ง... ">
+          <input type="text" id="commandSearch" data-i18n-placeholder="commands.search" placeholder="ค้นหาคำสั่ง...">
         </div>
 
-        <!-- Music Commands -->
         <div class="command-category animate-on-scroll">
           <div class="category-header">
             <i class="fas fa-music"></i>
@@ -73,47 +70,68 @@
             <div class="command-card">
               <span class="command-name">/play</span>
               <p class="command-desc" data-i18n="commands.playDesc">พิมพ์ชื่อเพลง หรือวางลิงก์ (YouTube/Spotify/SoundCloud) เพื่อเริ่มเล่น</p>
-              <div class="command-usage"><span data-i18n="commands.usage">การใช้งาน: </span> <code>/play [ชื่อเพลง/URL]</code></div>
+              <div class="command-usage"><span data-i18n="commands.usage">การใช้งาน:</span> <code>/play [ชื่อเพลง/URL]</code></div>
             </div>
+            
             <div class="command-card">
               <span class="command-name">/stop</span>
               <p class="command-desc" data-i18n="commands.stopDesc">หยุดเล่น, ล้างคิวทั้งหมด และออกจากห้อง</p>
               <div class="command-usage"><span data-i18n="commands.usage">การใช้งาน:</span> <code>/stop</code></div>
             </div>
+            
             <div class="command-card">
               <span class="command-name">/skip</span>
               <p class="command-desc" data-i18n="commands.skipDesc">ข้ามเพลงปัจจุบันและเล่นเพลงถัดไป</p>
-              <div class="command-usage"><span data-i18n="commands. usage">การใช้งาน:</span> <code>/skip</code></div>
+              <div class="command-usage"><span data-i18n="commands.usage">การใช้งาน:</span> <code>/skip</code></div>
             </div>
+
+            <div class="command-card">
+              <span class="command-name">/bassboost</span>
+              <p class="command-desc" data-i18n="commands.bassboostDesc">🎧 ปรับระดับเสียงเบส</p>
+              <div style="margin-top: 10px; font-size: 0.9rem; color: var(--text-secondary);">
+                <ul style="list-style: none; padding-left: 5px;">
+                  <li>• <strong style="color:var(--accent)">Off:</strong> <span data-i18n="commands.bassOff">Normal, clear sound</span></li>
+                  <li>• <strong style="color:var(--accent)">Low:</strong> <span data-i18n="commands.bassLow">Softer, deeper bass (Car mode)</span></li>
+                  <li>• <strong style="color:var(--accent)">Medium:</strong> <span data-i18n="commands.bassMedium">Punchy bass (Club/Bar vibe)</span></li>
+                  <li>• <strong style="color:var(--accent)">High:</strong> <span data-i18n="commands.bassHigh">Heavy vibration (Concert/Festival)</span></li>
+                  <li>• <strong style="color:#ff4444">Extreme:</strong> <span data-i18n="commands.bassExtreme">Distorted/Earrape (Warning!)</span></li>
+                </ul>
+              </div>
+              <div class="command-usage" style="margin-top:10px;"><span data-i18n="commands.usage">การใช้งาน:</span> <code>/bassboost [level]</code></div>
+            </div>
+
             <div class="command-card">
               <span class="command-name">/queue</span>
               <p class="command-desc" data-i18n="commands.queueDesc">ดูรายชื่อเพลงทั้งหมดในคิว</p>
               <div class="command-usage"><span data-i18n="commands.usage">การใช้งาน:</span> <code>/queue</code></div>
             </div>
+            
             <div class="command-card">
               <span class="command-name">/volume</span>
               <p class="command-desc" data-i18n="commands.volumeDesc">ปรับระดับเสียง (ใส่ตัวเลข 1 ถึง 100)</p>
               <div class="command-usage"><span data-i18n="commands.usage">การใช้งาน:</span> <code>/volume [1-100]</code></div>
             </div>
+            
             <div class="command-card">
               <span class="command-name">/loop</span>
-              <p class="command-desc" data-i18n="commands.loopDesc">เปลี่ยนโหมดวนซ้ำ:  เพลงเดียว / ทั้งคิว / ปิด</p>
+              <p class="command-desc" data-i18n="commands.loopDesc">เปลี่ยนโหมดวนซ้ำ: เพลงเดียว / ทั้งคิว / ปิด</p>
               <div class="command-usage"><span data-i18n="commands.usage">การใช้งาน:</span> <code>/loop [off/song/queue]</code></div>
             </div>
+            
             <div class="command-card">
               <span class="command-name">/shuffle</span>
               <p class="command-desc" data-i18n="commands.shuffleDesc">สุ่มเรียงลำดับเพลงในคิวใหม่ทั้งหมด</p>
               <div class="command-usage"><span data-i18n="commands.usage">การใช้งาน:</span> <code>/shuffle</code></div>
             </div>
+            
             <div class="command-card">
               <span class="command-name">/lyrics</span>
               <p class="command-desc" data-i18n="commands.lyricsDesc">แสดงเนื้อเพลงของเพลงที่กำลังเล่นอยู่</p>
-              <div class="command-usage"><span data-i18n="commands. usage">การใช้งาน:</span> <code>/lyrics</code></div>
+              <div class="command-usage"><span data-i18n="commands.usage">การใช้งาน:</span> <code>/lyrics</code></div>
             </div>
           </div>
         </div>
 
-        <!-- Settings Commands -->
         <div class="command-category animate-on-scroll">
           <div class="category-header">
             <i class="fas fa-cog"></i>
@@ -138,20 +156,18 @@
           </div>
         </div>
 
-        <!-- Tips -->
         <div class="tips-section animate-on-scroll">
           <div class="tip-card">
             <div class="tip-icon">💡</div>
             <div class="tip-content">
-              <h3 data-i18n="commands.tipTitle">รู้หรือไม่? </h3>
-              <p data-i18n="commands.tipContent">คุณสามารถ คลิกขวา ที่ข้อความใดก็ได้ → เลือก Apps → Play This เพื่อเล่นเพลงทันที! </p>
+              <h3 data-i18n="commands.tipTitle">รู้หรือไม่?</h3>
+              <p data-i18n="commands.tipContent">คุณสามารถ คลิกขวา ที่ข้อความใดก็ได้ → เลือก Apps → Play This เพื่อเล่นเพลงทันที!</p>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Footer include -->
     <div id="footer-slot"></div>
   </main>
 
