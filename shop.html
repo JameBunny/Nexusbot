@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop - Nexus Bot</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2? family=Noto+Sans+Thai:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;700&family=Inter: wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="assets/logo.png" alt="Nexus Logo">
+                <span>Nexus</span>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link" data-i18n="nav.home">หน้าแรก</a></li>
+                <li><a href="commands.html" class="nav-link" data-i18n="nav.commands">คำสั่ง</a></li>
+                <li><a href="shop.html" class="nav-link active" data-i18n="nav.shop">ร้านค้า</a></li>
+                <li><a href="terms.html" class="nav-link" data-i18n="nav.terms">ข้อกำหนด</a></li>
+                <li><a href="privacy. html" class="nav-link" data-i18n="nav.privacy">ความเป็นส่วนตัว</a></li>
+            </ul>
+            <div class="nav-actions">
+                <div class="language-selector">
+                    <button class="lang-btn" id="langBtn">
+                        <i class="fas fa-globe"></i>
+                        <span id="currentLang">TH</span>
+                    </button>
+                    <div class="lang-dropdown" id="langDropdown">
+                        <button onclick="changeLanguage('th')">🇹🇭 ไทย</button>
+                        <button onclick="changeLanguage('en')">🇺🇸 English</button>
+                        <button onclick="changeLanguage('ja')">🇯🇵 日本語</button>
+                    </div>
+                </div>
+                <a href="https://discord.com/oauth2/authorize? client_id=YOUR_BOT_ID" class="btn btn-primary" data-i18n="nav.invite">เชิญบอท</a>
+            </div>
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header shop-header">
+        <div class="container">
+            <h1 class="animate-fade-up"><i class="fas fa-shopping-cart"></i> <span data-i18n="shop.title">ร้านค้า</span></h1>
+            <p class="animate-fade-up" data-i18n="shop.subtitle">อัพเกรดประสบการณ์เพลงของคุณ</p>
+        </div>
+    </section>
+
+    <!-- Shop Content -->
+    <section class="shop-section">
+        <div class="container">
+            <!-- Premium Plans -->
+            <div class="pricing-grid">
+                <!-- Free Plan -->
+                <div class="pricing-card animate-on-scroll">
+                    <div class="pricing-header">
+                        <h3 data-i18n="shop. free">ฟรี</h3>
+                        <div class="price">
+                            <span class="currency">฿</span>
+                            <span class="amount">0</span>
+                            <span class="period" data-i18n="shop.forever">ตลอดกาล</span>
+                        </div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> <span data-i18n="shop.freeFeature1">คำสั่งเพลงพื้นฐาน</span></li>
+                        <li><i class="fas fa-check"></i> <span data-i18n="shop.freeFeature2">คิวได้ 50 เพลง</span></li>
+                        <li><i class="fas fa-check"></i> <span data-i18n="shop.freeFeature3">Bass Boost 3 ระดับ</span></li>
+                        <li><i class="fas fa-check"></i> <span data-i18n="shop.freeFeature4">รองรับ 3 ภาษา</span></li>
+                        <li class="disabled"><i class="fas fa-times"></i> <span data-i18n="shop.freeFeature5">24/7 Mode</span></li>
+                        <li class="disabled"><i class="fas fa-times"></i> <span data-i18n="shop.freeFeature6">Audio Filters</span></li>
+                    </ul>
+                    <a href="https://discord.com/oauth2/authorize?client_id=YOUR_BOT_ID" class="btn btn-secondary btn-block" data-i18n="shop.getStarted">เริ่มต้นใช้งาน</a>
+                </div>
+
+                <!-- Premium Plan -->
+                <div class="pricing-card featured animate-on-scroll">
+                    <div class="popular-badge" data-i18n="shop.popular">ยอดนิยม</div>
+                    <div class="pricing-header">
+                        <h3 data-i18n="shop.premium">พรีเมียม</h3>
+                        <div class="price">
+                            <span class="currency">฿</span>
+                            <span class="amount">99</span>
+                            <span class="period" data-i18n="shop. perMonth">/เดือน</span>
+                        </div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> <span data-i18n="shop.premiumFeature1">ทุกอย่างในแพ็คเกจฟรี</span></li>
+                        <li><i class="fas fa-check"></i> <span data-i18n="shop.premiumFeature2">คิวไม่จำกัด</span></li>
+                        <li><i class="fas fa-check"></i> <span data-i18n="shop.premiumFeature3">Bass Boost 5 ระดับ</span></li>
+                        <li><i class="fas fa-check"></i> <span data-i18n="shop.premiumFeature4">24/7 Mode</span></li>
+                        <li><i class="fas fa-check"></i> <span data-i18n="shop. premiumFeature5">Audio Filters</span></li>
+                        <li><i class="fas fa-check"></i> <span data-i18n="shop. premiumFeature6">Priority Support</span></li>
+                    </ul>
+                    <a href="https://discord.gg/YOUR_SERVER" class="btn btn-primary btn-block" data-i18n="shop.subscribe">สมัครสมาชิก</a>
+                </div>
+
+                <!-- Lifetime Plan -->
+                <div class="pricing-card animate-on-scroll">
+                    <div class="pricing-header">
+                        <h3 data-i18n="shop.lifetime">ตลอดชีพ</h3>
+                        <div class="price">
+                            <span class="currency">฿</span>
+                            <span class="amount">999</span>
+                            <span class="period" data-i18n="shop.oneTime">ครั้งเดียว</span>
+                        </div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> <span data-i18n="shop.lifetimeFeature1">ทุกอย่างในพรีเมียม</span></li>
+                        <li><i class="fas fa-check"></i> <span data-i18n="shop.lifetimeFeature2">ไม่ต้องจ่ายรายเดือน</span></li>
+                        <li><i class="fas fa-check"></i> <span data-i18n="shop.lifetimeFeature3">Early Access Features</span></li>
+                        <li><i class="fas fa-check"></i> <span data-i18n="shop.lifetimeFeature4">Custom Bot Avatar</span></li>
+                        <li><i class="fas fa-check"></i> <span data-i18n="shop.lifetimeFeature5">VIP Discord Role</span></li>
+                        <li><i class="fas fa-check"></i> <span data-i18n="shop.lifetimeFeature6">Direct Developer Support</span></li>
+                    </ul>
+                    <a href="https://discord.gg/YOUR_SERVER" class="btn btn-secondary btn-block" data-i18n="shop.buyNow">ซื้อเลย</a>
+                </div>
+            </div>
+
+            <!-- Support Us Section -->
+            <div class="support-section animate-on-scroll">
+                <h2 data-i18n="shop. supportUs">สนับสนุนเรา</h2>
+                <p data-i18n="shop.supportDesc">ซื้อสติ๊กเกอร์ LINE น่ารักๆ ของเราได้ที่นี่! </p>
+                <div class="sticker-grid">
+                    <a href="https://store.line.me/stickershop/product/30372109/th" class="sticker-card" target="_blank">
+                        <img src="https://stickershop.line-scdn.net/stickershop/v1/product/30372109/LINEStorePC/main.png" alt="Sticker Pack 1">
+                        <span data-i18n="shop.stickerPack1">สติ๊กเกอร์ชุดที่ 1</span>
+                    </a>
+                    <a href="https://store.line.me/stickershop/product/31896752/th" class="sticker-card" target="_blank">
+                        <img src="https://stickershop.line-scdn.net/stickershop/v1/product/31896752/LINEStorePC/main.png" alt="Sticker Pack 2">
+                        <span data-i18n="shop.stickerPack2">สติ๊กเกอร์ชุดที่ 2</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- FAQ -->
+            <div class="faq-section animate-on-scroll">
+                <h2 data-i18n="shop. faq">คำถามที่พบบ่อย</h2>
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span data-i18n="shop.faq1Q">ฉันจะชำระเงินได้อย่างไร?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p data-i18n="shop.faq1A">คุณสามารถชำระเงินผ่าน PromptPay, บัตรเครดิต/เดบิต หรือ PayPal ติดต่อเราได้ที่ Discord Server</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span data-i18n="shop.faq2Q">Premium ใช้ได้กี่เซิร์ฟเวอร์? </span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p data-i18n="shop.faq2A">แพ็คเกจพรีเมียมใช้ได้ 1 เซิร์ฟเวอร์ต่อ 1 สิทธิ์ หากต้องการใช้หลายเซิร์ฟเวอร์ ติดต่อทีมงานเพื่อรับส่วนลดพิเศษ</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span data-i18n="shop.faq3Q">สามารถขอคืนเงินได้หรือไม่?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p data-i18n="shop.faq3A">เราจะพิจารณาคืนเงินเป็นรายกรณี ภายใน 7 วันหลังซื้อ หากมีปัญหาการใช้งานที่แก้ไขไม่ได้</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="assets/logo.png" alt="Nexus Logo">
+                    <span>Nexus</span>
+                    <p data-i18n="footer. description">บอทเพลง Discord ที่ดีที่สุด</p>
+                </div>
+                <div class="footer-links">
+                    <h4 data-i18n="footer.links">ลิงก์</h4>
+                    <ul>
+                        <li><a href="commands. html" data-i18n="nav. commands">คำสั่ง</a></li>
+                        <li><a href="shop. html" data-i18n="nav. shop">ร้านค้า</a></li>
+                        <li><a href="terms.html" data-i18n="nav.terms">ข้อกำหนด</a></li>
+                        <li><a href="privacy.html" data-i18n="nav.privacy">ความเป็นส่วนตัว</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h4 data-i18n="footer.connect">ติดต่อเรา</h4>
+                    <div class="social-links">
+                        <a href="https://discord.gg/YOUR_SERVER" aria-label="Discord"><i class="fab fa-discord"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Nexus Bot. All rights reserved. </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/i18n.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
