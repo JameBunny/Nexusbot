@@ -12,7 +12,7 @@
     document.getElementsByTagName('head')[0].appendChild(link);
   }
   // ใส่ลิงก์รูปตรงนี้ (แนะนำให้ใช้ .png ที่ตัดวงกลมแล้ว ถ้ามี)
-  link.href = 'https://i.imgur.com/L8kYHpv.png'; 
+  link.href = 'https://i.imgur.com/OWQKhLp.jpeg'; 
 })();
 
 // =============================================
