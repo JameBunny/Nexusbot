@@ -13,7 +13,7 @@
     <nav class="navbar">
         <div class="nav-container">
             <a href="index.html" class="nav-logo">
-                <img src="assets/logo.png" alt="Nexus Logo">
+                <img src="assets/logo.png" alt="Nexus Logo" onerror="this. style.display='none'">
                 <span>Nexus</span>
             </a>
             <ul class="nav-menu" id="navMenu">
@@ -25,19 +25,19 @@
             </ul>
             <div class="nav-actions">
                 <div class="language-selector">
-                    <button class="lang-btn" id="langBtn">
+                    <button class="lang-btn" id="langBtn" type="button">
                         <i class="fas fa-globe"></i>
                         <span id="currentLang">TH</span>
                     </button>
                     <div class="lang-dropdown" id="langDropdown">
-                        <button onclick="changeLanguage('th')">🇹🇭 ไทย</button>
-                        <button onclick="changeLanguage('en')">🇺🇸 English</button>
-                        <button onclick="changeLanguage('ja')">🇯🇵 日本語</button>
+                        <button type="button" data-lang="th">🇹🇭 ไทย</button>
+                        <button type="button" data-lang="en">🇺🇸 English</button>
+                        <button type="button" data-lang="ja">🇯🇵 日本語</button>
                     </div>
                 </div>
                 <a href="https://discord.com/oauth2/authorize?client_id=YOUR_BOT_ID" class="btn btn-primary" data-i18n="nav.invite">เชิญบอท</a>
             </div>
-            <button class="hamburger" id="hamburger">
+            <button class="hamburger" id="hamburger" type="button">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -58,7 +58,7 @@
         </div>
         <div class="hero-content">
             <div class="hero-logo animate-float">
-                <img src="assets/logo.png" alt="Nexus Bot">
+                <img src="assets/logo.png" alt="Nexus Bot" onerror="this.style.display='none'">
             </div>
             <h1 class="hero-title animate-fade-up">
                 <span class="gradient-text">Nexus</span>
@@ -69,15 +69,15 @@
             <div class="hero-stats animate-fade-up">
                 <div class="stat">
                     <span class="stat-number" data-count="10000">0</span>+
-                    <span class="stat-label" data-i18n="hero.servers">เซิร์ฟเวอร์</span>
+                    <span class="stat-label" data-i18n="hero. servers">เซิร์ฟเวอร์</span>
                 </div>
                 <div class="stat">
                     <span class="stat-number" data-count="500000">0</span>+
-                    <span class="stat-label" data-i18n="hero. users">ผู้ใช้</span>
+                    <span class="stat-label" data-i18n="hero.users">ผู้ใช้</span>
                 </div>
                 <div class="stat">
                     <span class="stat-number" data-count="1000000">0</span>+
-                    <span class="stat-label" data-i18n="hero.songs">เพลงที่เล่น</span>
+                    <span class="stat-label" data-i18n="hero. songs">เพลงที่เล่น</span>
                 </div>
             </div>
             <div class="hero-buttons animate-fade-up">
@@ -137,7 +137,7 @@
                         <i class="fas fa-bolt"></i>
                     </div>
                     <h3 data-i18n="features.fast">ตอบสนองรวดเร็ว</h3>
-                    <p data-i18n="features.fastDesc">Latency ต่ำ เสียงคมชัด ไม่กระตุก</p>
+                    <p data-i18n="features. fastDesc">Latency ต่ำ เสียงคมชัด ไม่กระตุก</p>
                 </div>
                 <div class="feature-card animate-on-scroll">
                     <div class="feature-icon">
@@ -180,7 +180,7 @@
         <div class="container">
             <div class="cta-content animate-on-scroll">
                 <h2 data-i18n="cta.title">พร้อมที่จะเริ่มฟังเพลงแล้วหรือยัง? </h2>
-                <p data-i18n="cta.subtitle">เพิ่ม Nexus เข้าเซิร์ฟเวอร์ของคุณวันนี้ ฟรี!</p>
+                <p data-i18n="cta.subtitle">เพิ่ม Nexus เข้าเซิร์ฟเวอร์ของคุณวันนี้ ฟรี! </p>
                 <a href="https://discord.com/oauth2/authorize?client_id=YOUR_BOT_ID" class="btn btn-primary btn-lg">
                     <i class="fab fa-discord"></i>
                     <span data-i18n="cta. button">เพิ่มบอทตอนนี้</span>
@@ -194,7 +194,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-brand">
-                    <img src="assets/logo.png" alt="Nexus Logo">
+                    <img src="assets/logo.png" alt="Nexus Logo" onerror="this.style.display='none'">
                     <span>Nexus</span>
                     <p data-i18n="footer.description">บอทเพลง Discord ที่ดีที่สุด</p>
                 </div>
