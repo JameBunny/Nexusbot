@@ -779,7 +779,7 @@ img {
     box-shadow: var(--shadow-md);
 }
 
-.command-card. featured {
+.command-card.featured {
     grid-column: 1 / -1;
     background: linear-gradient(135deg, rgba(88, 101, 242, 0.1) 0%, rgba(0, 212, 170, 0.05) 100%);
 }
@@ -1290,7 +1290,7 @@ img {
         font-size: 1. 1rem;
     }
     
-    .nav-actions . btn {
+    .nav-actions .btn {
         display: none;
     }
     
@@ -1307,7 +1307,7 @@ img {
         align-items: center;
     }
     
-    .hero-buttons . btn {
+    .hero-buttons .btn {
         width: 100%;
         max-width: 300px;
     }
