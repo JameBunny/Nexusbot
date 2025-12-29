@@ -6,7 +6,7 @@
     <title>Privacy Policy - Nexus Bot</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2? family=Noto+Sans+Thai: wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Navbar -->
@@ -16,12 +16,12 @@
                 <img src="assets/logo.png" alt="Nexus Logo">
                 <span>Nexus</span>
             </a>
-            <ul class="nav-menu">
-                <li><a href="index.html" class="nav-link" data-i18n="nav.home">หน้าแรก</a></li>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index. html" class="nav-link" data-i18n="nav.home">หน้าแรก</a></li>
                 <li><a href="commands.html" class="nav-link" data-i18n="nav.commands">คำสั่ง</a></li>
-                <li><a href="shop.html" class="nav-link" data-i18n="nav.shop">ร้านค้า</a></li>
+                <li><a href="shop. html" class="nav-link" data-i18n="nav.shop">ร้านค้า</a></li>
                 <li><a href="terms.html" class="nav-link" data-i18n="nav.terms">ข้อกำหนด</a></li>
-                <li><a href="privacy.html" class="nav-link active" data-i18n="nav.privacy">ความเป็นส่วนตัว</a></li>
+                <li><a href="privacy. html" class="nav-link active" data-i18n="nav.privacy">ความเป็นส่วนตัว</a></li>
             </ul>
             <div class="nav-actions">
                 <div class="language-selector">
@@ -49,7 +49,7 @@
     <section class="page-header">
         <div class="container">
             <h1 class="animate-fade-up"><i class="fas fa-shield-alt"></i> <span data-i18n="privacy.title">นโยบายความเป็นส่วนตัว</span></h1>
-            <p class="animate-fade-up" data-i18n="privacy.lastUpdated">อัปเดตล่าสุด: 29 ธันวาคม 2025</p>
+            <p class="animate-fade-up" data-i18n="privacy. lastUpdated">อัปเดตล่าสุด: 29 ธันวาคม 2025</p>
         </div>
     </section>
 
@@ -70,7 +70,7 @@
 
                 <div class="legal-block">
                     <h2 data-i18n="privacy.section2Title">2. ข้อมูลที่เราไม่เก็บ</h2>
-                    <p data-i18n="privacy.section2Content">เราไม่เก็บรวบรวมข้อมูลเหล่านี้: </p>
+                    <p data-i18n="privacy.section2Content">เราไม่เก็บรวบรวมข้อมูลเหล่านี้:</p>
                     <ul>
                         <li data-i18n="privacy.section2Item1">ข้อความส่วนตัวหรือข้อความในช่อง</li>
                         <li data-i18n="privacy.section2Item2">ข้อมูลเสียงหรือการสนทนา</li>
@@ -92,7 +92,7 @@
 
                 <div class="legal-block">
                     <h2 data-i18n="privacy.section4Title">4. การเก็บรักษาข้อมูล</h2>
-                    <p data-i18n="privacy. section4Content">ข้อมูลการตั้งค่าจะถูกเก็บไว้ตราบเท่าที่บอทยังอยู่ในเซิร์ฟเวอร์ของคุณ เมื่อบอทถูกลบออก ข้อมูลจะถูกลบภายใน 30 วัน</p>
+                    <p data-i18n="privacy.section4Content">ข้อมูลการตั้งค่าจะถูกเก็บไว้ตราบเท่าที่บอทยังอยู่ในเซิร์ฟเวอร์ของคุณ เมื่อบอทถูกลบออก ข้อมูลจะถูกลบภายใน 30 วัน</p>
                 </div>
 
                 <div class="legal-block">
@@ -139,10 +139,10 @@
                 <div class="footer-brand">
                     <img src="assets/logo.png" alt="Nexus Logo">
                     <span>Nexus</span>
-                    <p data-i18n="footer. description">บอทเพลง Discord ที่ดีที่สุด</p>
+                    <p data-i18n="footer.description">บอทเพลง Discord ที่ดีที่สุด</p>
                 </div>
                 <div class="footer-links">
-                    <h4 data-i18n="footer.links">ลิงก์</h4>
+                    <h4 data-i18n="footer. links">ลิงก์</h4>
                     <ul>
                         <li><a href="commands.html" data-i18n="nav.commands">คำสั่ง</a></li>
                         <li><a href="shop.html" data-i18n="nav.shop">ร้านค้า</a></li>
@@ -165,7 +165,8 @@
         </div>
     </footer>
 
-    <script src="js/i18n.js"></script>
+    <!-- IMPORTANT:  Load i18n. js FIRST, then main.js -->
+    <script src="js/i18n. js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>
