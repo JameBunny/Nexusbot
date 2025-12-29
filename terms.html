@@ -5,14 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Terms of Service - Nexus Bot</title>
   <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare. com/ajax/libs/font-awesome/6.5.0/css/all. min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;700&family=Inter: wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
   <nav class="navbar">
     <div class="nav-container">
-      <a href="index. html" class="nav-logo">
-        <img src="https://i.imgur.com/OWQKhLp. jpeg" alt="Nexus Logo">
+      <a href="index.html" class="nav-logo">
+        <img src="https://i.imgur.com/OWQKhLp.jpeg" alt="Nexus Logo">
         <span>Nexus</span>
       </a>
       <ul class="nav-menu" id="navMenu">
@@ -53,19 +53,20 @@
     <section class="legal-section">
       <div class="container">
         <div class="legal-content animate-on-scroll">
+          
           <div class="legal-block">
-            <h2 data-i18n="terms. section1Title">1. การยอมรับข้อกำหนด</h2>
+            <h2 data-i18n="terms.section1Title">1. การยอมรับข้อกำหนด</h2>
             <p data-i18n="terms.section1Content">เมื่อคุณใช้งาน Nexus Bot ถือว่าคุณยอมรับข้อกำหนดการใช้งานทั้งหมดนี้ หากไม่ยอมรับ กรุณาหยุดใช้งานบอท</p>
           </div>
 
           <div class="legal-block">
             <h2 data-i18n="terms.section2Title">2. การใช้งานบอท</h2>
-            <p data-i18n="terms.section2Content">คุณตกลงที่จะ: </p>
+            <p data-i18n="terms.section2Content">คุณตกลงที่จะ:</p>
             <ul>
               <li data-i18n="terms.section2Item1">ใช้บอทเพื่อวัตถุประสงค์ที่ถูกกฎหมายเท่านั้น</li>
-              <li data-i18n="terms. section2Item2">ไม่ใช้บอทในทางที่ละเมิดลิขสิทธิ์</li>
+              <li data-i18n="terms.section2Item2">ไม่ใช้บอทในทางที่ละเมิดลิขสิทธิ์</li>
               <li data-i18n="terms.section2Item3">ไม่พยายาม hack หรือทำลายระบบบอท</li>
-              <li data-i18n="terms. section2Item4">ปฏิบัติตามข้อกำหนดของ Discord</li>
+              <li data-i18n="terms.section2Item4">ปฏิบัติตามข้อกำหนดของ Discord</li>
             </ul>
           </div>
 
@@ -74,14 +75,14 @@
             <p data-i18n="terms.section3Content">สำหรับบริการพรีเมียม:</p>
             <ul>
               <li data-i18n="terms.section3Item1">การชำระเงินเป็นแบบล่วงหน้า</li>
-              <li data-i18n="terms. section3Item2">สิทธิ์จะหมดอายุตามระยะเวลาที่ซื้อ</li>
+              <li data-i18n="terms.section3Item2">สิทธิ์จะหมดอายุตามระยะเวลาที่ซื้อ</li>
               <li data-i18n="terms.section3Item3">ไม่สามารถโอนย้ายไปเซิร์ฟเวอร์อื่นได้</li>
-              <li data-i18n="terms. section3Item4">การคืนเงินพิจารณาเป็นรายกรณี</li>
+              <li data-i18n="terms.section3Item4">การคืนเงินพิจารณาเป็นรายกรณี</li>
             </ul>
           </div>
 
           <div class="legal-block">
-            <h2 data-i18n="terms. section4Title">4. ข้อจำกัดความรับผิดชอบ</h2>
+            <h2 data-i18n="terms.section4Title">4. ข้อจำกัดความรับผิดชอบ</h2>
             <p data-i18n="terms.section4Content">บอทให้บริการ "ตามสภาพ" (as is) เราไม่รับประกันว่าบอทจะทำงานได้ตลอดเวลาโดยไม่มีข้อผิดพลาด</p>
           </div>
 
@@ -103,25 +104,31 @@
               <span data-i18n="terms.contactUs">ติดต่อเรา</span>
             </a>
           </div>
+
         </div>
       </div>
     </section>
-
-    <div id="footer-slot"></div>
   </main>
 
-  <script>
-    fetch('footer.html')
-      .then(function(response) { return response.text(); })
-      .then(function(html) {
-        document. getElementById('footer-slot').innerHTML = html;
-        if (typeof applyTranslations === 'function') {
-          var lang = localStorage.getItem('nexus-language') || 'th';
-          applyTranslations(lang);
-        }
-      });
-  </script>
+  <div id="footer-slot"></div>
+
   <script src="js/i18n.js"></script>
   <script src="js/main.js"></script>
+  
+  <script>
+    // Script สำหรับโหลด footer.html
+    fetch('footer.html')
+      .then(response => response.text())
+      .then(html => {
+        document.getElementById('footer-slot').innerHTML = html;
+        
+        // เรียกใช้ฟังก์ชันแปลภาษาหลังจาก Footer โหลดเสร็จ (ถ้ามี)
+        if (typeof applyTranslations === 'function') {
+          const lang = localStorage.getItem('nexus-language') || 'th';
+          applyTranslations(lang);
+        }
+      })
+      .catch(error => console.error('Error loading footer:', error));
+  </script>
 </body>
 </html>
