@@ -4,6 +4,7 @@
 (function () {
   'use strict';
 
+  // 1. ข้อมูลคำแปล (Translations Data)
   var translations = {
     th: {
       nav: { home: "หน้าแรก", commands: "คำสั่ง", shop: "ร้านค้า", terms: "ข้อกำหนด", privacy: "ความเป็นส่วนตัว", invite: "เชิญบอท" },
@@ -273,6 +274,7 @@
     }
   };
 
+  // 2. ฟังก์ชันช่วยดึงค่า (Helper Function)
   function getNestedValue(obj, path) {
     if (!obj || !path) return undefined;
     var keys = path.split('.');
@@ -287,10 +289,14 @@
     return result;
   }
 
+  // 3. ฟังก์ชันแปลภาษา (Main Translation Logic)
   function applyTranslations(lang) {
+    if (!lang) lang = getSavedLang(); // ถ้าไม่ส่ง lang มา ให้ไปดึงค่าที่เซฟไว้
+
     var langData = translations[lang];
     if (!langData) return;
 
+    // อัปเดต textContent
     var nodes = document.querySelectorAll('[data-i18n]');
     for (var i = 0; i < nodes.length; i++) {
       var key = nodes[i].getAttribute('data-i18n');
@@ -298,6 +304,7 @@
       if (txt !== undefined) nodes[i].textContent = txt;
     }
 
+    // อัปเดต placeholder
     var placeholders = document.querySelectorAll('[data-i18n-placeholder]');
     for (var j = 0; j < placeholders.length; j++) {
       var pKey = placeholders[j].getAttribute('data-i18n-placeholder');
@@ -305,60 +312,87 @@
       if (pTxt !== undefined) placeholders[j].placeholder = pTxt;
     }
 
+    // อัปเดต <html lang="...">
     document.documentElement.lang = lang;
+    
+    // อัปเดตปุ่มแสดงภาษา (ถ้ามี)
+    setLangDisplay(lang);
   }
 
+  // 4. ฟังก์ชันแสดงผลปุ่มเลือกภาษา
   function setLangDisplay(lang) {
     var el = document.getElementById('currentLang');
     if (!el) return;
-    el.textContent = (lang === 'th') ? 'TH' : (lang === 'en') ? 'EN' : 'JP';
+    
+    // แปลงรหัสภาษาเป็นข้อความที่ต้องการแสดง
+    var displayText = 'TH';
+    if (lang === 'en') displayText = 'EN';
+    if (lang === 'ja') displayText = 'JP';
+    
+    el.textContent = displayText;
   }
 
+  // 5. ฟังก์ชันเปลี่ยนภาษาและบันทึก
   function changeLanguage(lang) {
     if (lang !== 'th' && lang !== 'en' && lang !== 'ja') lang = 'th';
+    
     try { localStorage.setItem('nexus-language', lang); } catch (e) {}
-    setLangDisplay(lang);
+    
     applyTranslations(lang);
+    
+    // ปิด Dropdown หลังเลือกเสร็จ
     var dd = document.getElementById('langDropdown');
     if (dd) dd.classList.remove('active');
   }
 
+  // 6. ดึงค่าภาษาที่บันทึกไว้
   function getSavedLang() {
     try {
       var l = localStorage.getItem('nexus-language');
       if (l === 'th' || l === 'en' || l === 'ja') return l;
     } catch (e) {}
-    return 'th';
+    return 'th'; // ค่าเริ่มต้น
   }
 
+  // 7. ตั้งค่า Event Listener ให้ปุ่ม
   function initLanguageSelector() {
     var btn = document.getElementById('langBtn');
     var dropdown = document.getElementById('langDropdown');
+
     if (!btn || !dropdown) return;
 
+    // ปุ่มเปิด/ปิด Dropdown
     btn.addEventListener('click', function (e) {
-      e.stopPropagation();
+      e.stopPropagation(); // หยุดไม่ให้คลิกทะลุไปโดน document
       dropdown.classList.toggle('active');
     });
 
+    // ปุ่มเลือกภาษาใน Dropdown (แก้ BUG: ใช้ closest เพื่อให้กดโดน icon หรือ text ก็ทำงาน)
     dropdown.addEventListener('click', function (e) {
-      var lang = e.target.getAttribute('data-lang');
-      if (lang) {
-        changeLanguage(lang);
+      var target = e.target.closest('[data-lang]'); // ค้นหาปุ่มที่มี data-lang ใกล้จุดที่คลิกที่สุด
+      
+      if (target) {
+        var lang = target.getAttribute('data-lang');
+        if (lang) {
+          changeLanguage(lang);
+        }
+        e.stopPropagation();
       }
-      e.stopPropagation();
     });
 
-    document.addEventListener('click', function () {
-      dropdown.classList.remove('active');
+    // คลิกที่อื่นเพื่อปิด Dropdown
+    document.addEventListener('click', function (e) {
+      if (!dropdown.contains(e.target) && !btn.contains(e.target)) {
+        dropdown.classList.remove('active');
+      }
     });
   }
 
+  // 8. เริ่มทำงานเมื่อหน้าเว็บโหลด
   function init() {
     var lang = getSavedLang();
-    setLangDisplay(lang);
-    applyTranslations(lang);
-    initLanguageSelector();
+    applyTranslations(lang); // แปลภาษาทันทีที่โหลด
+    initLanguageSelector();  // เตรียมปุ่มกด
   }
 
   if (document.readyState === 'loading') {
@@ -367,8 +401,8 @@
     init();
   }
 
-  // Expose to global for safety
+  // *** สำคัญ: เปิดให้ไฟล์อื่น (เช่น Footer ที่โหลดทีหลัง) เรียกใช้ได้ ***
   window.changeLanguage = changeLanguage;
   window.applyTranslations = applyTranslations;
-  window.initLanguageSelector = initLanguageSelector;
+  
 })();
