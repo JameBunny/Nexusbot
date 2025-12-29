@@ -1380,10 +1380,10 @@ main {
 }
 
 /* =============================================
-   RESPONSIVE - MOBILE (Main Fixes)
+   RESPONSIVE - MOBILE (FIXED VERSION)
    ============================================= */
 @media (max-width: 768px) {
-  /* Navbar */
+  /* จัดการ Navbar ให้เป็นแบบ Full Screen และพื้นหลังทึบ */
   .nav-menu {
     position: fixed;
     top: 0;
@@ -1391,79 +1391,112 @@ main {
     right: 0;
     bottom: 0;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start; /* เริ่มเรียงจากด้านบน */
     align-items: center;
-    background: rgba(5, 5, 8, 0.98);
-    backdrop-filter: blur(20px);
-    padding: 80px 30px 30px;
-    gap: 15px;
+    background: var(--bg-dark); /* ใช้สีพื้นหลังทึบ ไม่โปร่งแสง */
+    padding: 120px 30px 40px; /* เพิ่ม Padding ด้านบนหลบ Header */
+    gap: 20px;
     transform: translateX(100%);
-    transition: var(--transition-normal);
-    z-index: 999;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 998; /* อยู่ใต้ Hamburger/Logo เล็กน้อย */
+    overflow-y: auto; /* เผื่อเมนูยาวเกินจอ */
   }
 
   .nav-menu.active {
     transform: translateX(0);
   }
 
+  /* ปรับขนาดตัวหนังสือเมนูให้อ่านง่าย */
   .nav-link {
     width: 100%;
     padding: 15px;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
+    font-weight: 600;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05); /* เส้นคั่นบางๆ */
+  }
+
+  .nav-link.active {
+    background: transparent;
+    color: var(--primary);
+    border-bottom-color: var(--primary);
+  }
+  
+  .nav-link.active::after { display: none; }
+
+  /* จัดการปุ่ม Actions (ภาษา/Invite) */
+  .nav-actions { 
+    gap: 10px;
+    margin-right: 5px;
+    z-index: 1002; /* ให้อยู่เหนือเมนู */
+  }
+  
+  /* ซ่อนปุ่ม Invite ในมือถือเพื่อให้มีที่ว่าง (ปุ่มภาษาเก็บไว้) */
+  .nav-actions .btn { display: none; }
+  
+  /* Hamburger Menu */
+  .hamburger { 
+    display: flex; 
+    z-index: 1002; /* อยู่ชั้นบนสุด */
+  }
+
+  /* Hero Section ปรับระยะห่าง */
+  .hero {
+    padding: 140px 20px 60px; /* ดันลงมาไม่ให้ชน Header */
+    min-height: auto;
     text-align: center;
   }
 
-  .nav-link.active::after { display: none; }
-
-  .nav-actions { gap: 10px; }
-  .nav-actions .btn { display: none; }
-  .hamburger { display: flex; }
-
-  /* Hero */
-  .hero {
-    padding: 120px 20px 60px;
-    min-height: auto;
-  }
-
   .hero-logo {
-    width: 110px;
-    height: 110px;
+    width: 100px;
+    height: 100px;
+    margin-bottom: 20px;
   }
 
   .hero-title {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
+    line-height: 1.2;
   }
 
+  .hero-subtitle {
+    font-size: 1rem;
+    margin-bottom: 30px;
+  }
+
+  /* Stats เรียงแนวตั้ง */
   .hero-stats {
-    gap: 30px;
     flex-direction: column;
-    padding: 25px;
+    gap: 20px;
+    padding: 20px;
     width: 100%;
+    background: rgba(255, 255, 255, 0.03);
   }
 
   .stat-number { font-size: 2rem; }
 
+  /* Buttons */
   .hero-buttons {
     flex-direction: column;
     width: 100%;
-    max-width: 350px;
-    margin: 0 auto;
+    gap: 15px;
   }
   
   .hero-buttons .btn { width: 100%; }
 
   .scroll-indicator { display: none; }
 
-  /* Content Sections */
-  .features-grid { grid-template-columns: 1fr; }
-  .feature-card { padding: 30px 20px; }
+  /* Features & Content Cards */
+  .features-grid, 
+  .pricing-grid, 
+  .footer-content { 
+    grid-template-columns: 1fr; 
+    gap: 30px;
+  }
   
-  .platforms-logos { gap: 35px; }
+  .feature-card { padding: 25px 20px; }
   
-  .pricing-grid { grid-template-columns: 1fr; }
-  .pricing-card.featured { transform: none; }
-
-  .footer-content { grid-template-columns: 1fr; gap: 40px; }
+  .footer-content { text-align: center; justify-items: center; }
+  .footer-brand, .footer-links, .footer-social { align-items: center; text-align: center; }
   .footer-brand p { max-width: 100%; }
 }
 
