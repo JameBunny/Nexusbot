@@ -1,150 +1,127 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="th">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Terms of Service - Nexus Bot</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min. css">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms of Service - Nexus Bot</title>
+  
+  <link rel="icon" href="https://i.imgur.com/OWQKhLp.jpeg" type="image/jpeg">
+  <link rel="apple-touch-icon" href="https://i.imgur.com/OWQKhLp.jpeg">
+
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 </head>
 <body>
-    <!-- Navbar -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="index.html" class="nav-logo">
-                <img src="assets/logo. png" alt="Nexus Logo">
-                <span>Nexus</span>
-            </a>
-            <ul class="nav-menu">
-                <li><a href="index. html" class="nav-link" data-i18n="nav.home">หน้าแรก</a></li>
-                <li><a href="commands.html" class="nav-link" data-i18n="nav.commands">คำสั่ง</a></li>
-                <li><a href="shop.html" class="nav-link" data-i18n="nav.shop">ร้านค้า</a></li>
-                <li><a href="terms.html" class="nav-link active" data-i18n="nav.terms">ข้อกำหนด</a></li>
-                <li><a href="privacy. html" class="nav-link" data-i18n="nav.privacy">ความเป็นส่วนตัว</a></li>
-            </ul>
-            <div class="nav-actions">
-                <div class="language-selector">
-                    <button class="lang-btn" id="langBtn">
-                        <i class="fas fa-globe"></i>
-                        <span id="currentLang">TH</span>
-                    </button>
-                    <div class="lang-dropdown" id="langDropdown">
-                        <button onclick="changeLanguage('th')">🇹🇭 ไทย</button>
-                        <button onclick="changeLanguage('en')">🇺🇸 English</button>
-                        <button onclick="changeLanguage('ja')">🇯🇵 日本語</button>
-                    </div>
-                </div>
-                <a href="https://discord.com/oauth2/authorize? client_id=YOUR_BOT_ID" class="btn btn-primary" data-i18n="nav.invite">เชิญบอท</a>
-            </div>
-            <button class="hamburger" id="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <img src="https://i.imgur.com/OWQKhLp.jpeg" alt="Nexus Logo" />
+        <span>Nexus</span>
+      </a>
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="index.html" class="nav-link" data-i18n="nav.home">หน้าแรก</a></li>
+        <li><a href="commands.html" class="nav-link" data-i18n="nav.commands">คำสั่ง</a></li>
+        <li><a href="shop.html" class="nav-link" data-i18n="nav.shop">ร้านค้า</a></li>
+        <li><a href="terms.html" class="nav-link active" data-i18n="nav.terms">ข้อกำหนด</a></li>
+        <li><a href="privacy.html" class="nav-link" data-i18n="nav.privacy">ความเป็นส่วนตัว</a></li>
+      </ul>
+      <div class="nav-actions">
+        <div class="language-selector">
+          <button class="lang-btn" id="langBtn" type="button">
+            <i class="fas fa-globe"></i><span id="currentLang">TH</span>
+          </button>
+          <div class="lang-dropdown" id="langDropdown">
+            <button type="button" data-lang="th">🇹🇭 ไทย</button>
+            <button type="button" data-lang="en">🇺🇸 English</button>
+            <button type="button" data-lang="ja">🇯🇵 日本語</button>
+          </div>
         </div>
-    </nav>
+        <a href="https://discord.com/oauth2/authorize?client_id=YOUR_BOT_ID" class="btn btn-primary" data-i18n="nav.invite">เชิญบอท</a>
+        <button class="hamburger" id="hamburger" type="button">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
 
-    <!-- Page Header -->
+  <main>
     <section class="page-header">
-        <div class="container">
-            <h1 class="animate-fade-up"><i class="fas fa-file-contract"></i> <span data-i18n="terms.title">ข้อกำหนดการใช้งาน</span></h1>
-            <p class="animate-fade-up" data-i18n="terms.lastUpdated">อัปเดตล่าสุด: 29 ธันวาคม 2025</p>
-        </div>
+      <div class="container">
+        <h1 class="animate-fade-up"><i class="fas fa-file-contract"></i> <span data-i18n="terms.title">ข้อกำหนดการใช้งาน</span></h1>
+        <p class="animate-fade-up" data-i18n="terms.lastUpdated">อัปเดตล่าสุด: 29 ธันวาคม 2025</p>
+      </div>
     </section>
 
-    <!-- Terms Content -->
     <section class="legal-section">
-        <div class="container">
-            <div class="legal-content animate-on-scroll">
-                <div class="legal-block">
-                    <h2 data-i18n="terms.section1Title">1. การยอมรับข้อกำหนด</h2>
-                    <p data-i18n="terms.section1Content">เมื่อคุณใช้งาน Nexus Bot ถือว่าคุณยอมรับข้อกำหนดการใช้งานทั้งหมดนี้ หากไม่ยอมรับ กรุณาหยุดใช้งานบอท</p>
-                </div>
-
-                <div class="legal-block">
-                    <h2 data-i18n="terms.section2Title">2. การใช้งานบอท</h2>
-                    <p data-i18n="terms.section2Content">คุณตกลงที่จะ: </p>
-                    <ul>
-                        <li data-i18n="terms.section2Item1">ใช้บอทเพื่อวัตถุประสงค์ที่ถูกกฎหมายเท่านั้น</li>
-                        <li data-i18n="terms.section2Item2">ไม่ใช้บอทในทางที่ละเมิดลิขสิทธิ์</li>
-                        <li data-i18n="terms.section2Item3">ไม่พยายาม hack หรือทำลายระบบบอท</li>
-                        <li data-i18n="terms.section2Item4">ปฏิบัติตามข้อกำหนดของ Discord</li>
-                    </ul>
-                </div>
-
-                <div class="legal-block">
-                    <h2 data-i18n="terms.section3Title">3. บริการพรีเมียม</h2>
-                    <p data-i18n="terms.section3Content">สำหรับบริการพรีเมียม: </p>
-                    <ul>
-                        <li data-i18n="terms.section3Item1">การชำระเงินเป็นแบบล่วงหน้า</li>
-                        <li data-i18n="terms.section3Item2">สิทธิ์จะหมดอายุตามระยะเวลาที่ซื้อ</li>
-                        <li data-i18n="terms. section3Item3">ไม่สามารถโอนย้ายไปเซิร์ฟเวอร์อื่นได้</li>
-                        <li data-i18n="terms.section3Item4">การคืนเงินพิจารณาเป็นรายกรณี</li>
-                    </ul>
-                </div>
-
-                <div class="legal-block">
-                    <h2 data-i18n="terms.section4Title">4. ข้อจำกัดความรับผิดชอบ</h2>
-                    <p data-i18n="terms. section4Content">บอทให้บริการ "ตามสภาพ" (as is) เราไม่รับประกันว่าบอทจะทำงานได้ตลอดเวลาโดยไม่มีข้อผิดพลาด เราไม่รับผิดชอบต่อความเสียหายใดๆ ที่เกิดจากการใช้งานบอท</p>
-                </div>
-
-                <div class="legal-block">
-                    <h2 data-i18n="terms.section5Title">5. การระงับบริการ</h2>
-                    <p data-i18n="terms.section5Content">เราขอสงวนสิทธิ์ในการระงับการเข้าถึงบอทของคุณโดยไม่ต้องแจ้งล่วงหน้า หากคุณละเมิดข้อกำหนดใดๆ</p>
-                </div>
-
-                <div class="legal-block">
-                    <h2 data-i18n="terms.section6Title">6. การเปลี่ยนแปลงข้อกำหนด</h2>
-                    <p data-i18n="terms.section6Content">เราอาจเปลี่ยนแปลงข้อกำหนดได้ตลอดเวลา การใช้งานต่อหลังจากมีการเปลี่ยนแปลงถือว่าคุณยอมรับข้อกำหนดใหม่</p>
-                </div>
-
-                <div class="legal-block">
-                    <h2 data-i18n="terms. section7Title">7. ติดต่อเรา</h2>
-                    <p data-i18n="terms.section7Content">หากมีคำถามเกี่ยวกับข้อกำหนดการใช้งาน ติดต่อเราได้ที่ Discord Server</p>
-                    <a href="https://discord.gg/YOUR_SERVER" class="btn btn-primary">
-                        <i class="fab fa-discord"></i>
-                        <span data-i18n="terms.contactUs">ติดต่อเรา</span>
-                    </a>
-                </div>
-            </div>
+      <div class="container legal-content">
+        
+        <div class="legal-block animate-on-scroll">
+          <h2 data-i18n="terms.section1Title">1. การยอมรับข้อกำหนด</h2>
+          <p data-i18n="terms.section1Content">เมื่อคุณใช้งาน Nexus Bot ถือว่าคุณยอมรับข้อกำหนดการใช้งานทั้งหมดนี้...</p>
         </div>
+
+        <div class="legal-block animate-on-scroll">
+          <h2 data-i18n="terms.section2Title">2. การใช้งานบอท</h2>
+          <p data-i18n="terms.section2Content">คุณตกลงที่จะปฏิบัติตามข้อกำหนดดังนี้:</p>
+          <ul>
+            <li data-i18n="terms.section2Item1">ใช้บอทเพื่อวัตถุประสงค์ที่ถูกกฎหมายเท่านั้น</li>
+            <li data-i18n="terms.section2Item2">ไม่ใช้บอทในทางที่ละเมิดลิขสิทธิ์เพลง</li>
+            <li data-i18n="terms.section2Item3">ไม่พยายามเจาะระบบหรือทำลายการทำงานของบอท</li>
+            <li data-i18n="terms.section2Item4">ปฏิบัติตามข้อกำหนดของ Discord (ToS)</li>
+          </ul>
+        </div>
+
+        <div class="legal-block animate-on-scroll">
+          <h2 data-i18n="terms.section3Title">3. บริการพรีเมียม</h2>
+          <p data-i18n="terms.section3Content">สำหรับผู้ใช้งานที่สมัครสมาชิก Premium:</p>
+          <ul>
+            <li data-i18n="terms.section3Item1">การชำระเงินถือเป็นที่สิ้นสุด (Non-refundable)</li>
+            <li data-i18n="terms.section3Item2">สิทธิ์การใช้งานจะหมดอายุตามระยะเวลาที่กำหนด</li>
+            <li data-i18n="terms.section3Item3">ไม่สามารถโอนย้ายสิทธิ์ไปยังบัญชีอื่นได้</li>
+            <li data-i18n="terms.section3Item4">การคืนเงินจะพิจารณาเป็นรายกรณีเท่านั้น</li>
+          </ul>
+        </div>
+
+        <div class="legal-block animate-on-scroll">
+          <h2 data-i18n="terms.section4Title">4. ข้อจำกัดความรับผิดชอบ</h2>
+          <p data-i18n="terms.section4Content">บอทให้บริการในลักษณะ "ตามสภาพ" (As is) เราไม่รับประกันว่าบอทจะทำงานได้ตลอด 100% โดยไม่มีข้อผิดพลาด หรือหยุดชะงัก</p>
+        </div>
+
+        <div class="legal-block animate-on-scroll">
+          <h2 data-i18n="terms.section5Title">5. การระงับบริการ</h2>
+          <p data-i18n="terms.section5Content">เราขอสงวนสิทธิ์ในการระงับการใช้งานของคุณ หากตรวจพบการละเมิดข้อกำหนด โดยไม่ต้องแจ้งให้ทราบล่วงหน้า</p>
+        </div>
+
+        <div class="legal-block animate-on-scroll">
+          <h2 data-i18n="terms.section6Title">6. การเปลี่ยนแปลงข้อกำหนด</h2>
+          <p data-i18n="terms.section6Content">เราอาจปรับปรุงข้อกำหนดนี้ได้ทุกเมื่อ การใช้งานต่อหลังจากมีการเปลี่ยนแปลงถือว่าคุณยอมรับข้อกำหนดใหม่</p>
+        </div>
+
+        <div class="legal-block animate-on-scroll">
+          <h2 data-i18n="terms.section7Title">7. ติดต่อเรา</h2>
+          <p data-i18n="terms.section7Content">หากมีข้อสงสัยเกี่ยวกับข้อกำหนดการใช้งาน สามารถติดต่อทีมงานได้ที่ Discord Support</p>
+          <a href="https://discord.gg/YOUR_SERVER" class="btn btn-secondary" data-i18n="terms.contactUs">ติดต่อทีมงาน</a>
+        </div>
+
+      </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <img src="assets/logo.png" alt="Nexus Logo">
-                    <span>Nexus</span>
-                    <p data-i18n="footer.description">บอทเพลง Discord ที่ดีที่สุด</p>
-                </div>
-                <div class="footer-links">
-                    <h4 data-i18n="footer.links">ลิงก์</h4>
-                    <ul>
-                        <li><a href="commands.html" data-i18n="nav.commands">คำสั่ง</a></li>
-                        <li><a href="shop.html" data-i18n="nav.shop">ร้านค้า</a></li>
-                        <li><a href="terms.html" data-i18n="nav.terms">ข้อกำหนด</a></li>
-                        <li><a href="privacy.html" data-i18n="nav.privacy">ความเป็นส่วนตัว</a></li>
-                    </ul>
-                </div>
-                <div class="footer-social">
-                    <h4 data-i18n="footer.connect">ติดต่อเรา</h4>
-                    <div class="social-links">
-                        <a href="https://discord.gg/YOUR_SERVER" aria-label="Discord"><i class="fab fa-discord"></i></a>
-                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                        <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Nexus Bot. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
+    <div id="footer-slot"></div>
+  </main>
 
-    <script src="js/i18n. js"></script>
-    <script src="js/main.js"></script>
+  <script>
+    fetch('footer.html')
+      .then(r => r.text())
+      .then(html => {
+        document.getElementById('footer-slot').innerHTML = html;
+        if (typeof applyTranslations === 'function') {
+          const lang = localStorage.getItem('nexus-language') || 'th';
+          applyTranslations(lang);
+        }
+      });
+  </script>
+  <script src="js/i18n.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>
