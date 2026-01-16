@@ -1,134 +1,307 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Terms of Service - Nexus Bot</title>
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>XO Arena Bot - A New Era of Tic-Tac-Toe</title>
+  <meta name="description" content="Experience Tic-Tac-Toe on Discord like never before.">
+  <meta name="theme-color" content="#0b0f1a">
+
+  <link rel="icon" href="https://i.imgur.com/qqyb5eF.png">
+  
+  <style>
+    html.lenis, html.lenis body { height: auto; }
+    .lenis.lenis-smooth { scroll-behavior: auto !important; }
+    .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+    .lenis.lenis-stopped { overflow: hidden; }
+    .lenis.lenis-scrolling iframe { pointer-events: none; }
+  </style>
+
+  <style>
+    /* ====== Tokens & Basic Styles ====== */
+    :root{
+      --bg-1: #0b0f1a; --bg-2: #0a0d15;
+      --text-1: rgba(255,255,255,0.96); --text-2: rgba(255,255,255,0.80);
+      --link-1: #d6e4ff;
+      --glass-bg: rgba(255,255,255,0.08); /* ปรับให้ใสขึ้นเล็กน้อย */
+      --glass-border-1: rgba(255,255,255,0.15); --glass-border-2: rgba(255,255,255,0.02);
+      --glass-shadow: 0 22px 55px rgba(0,0,0,0.40), 0 1px 0 rgba(255,255,255,0.06) inset;
+      --radius-2xl: 22px; --blur: 24px; --sat: 120%;
+      --top-highlight: linear-gradient(180deg, rgba(255,255,255,0.15), rgba(255,255,255,0) 40%);
+    }
+    
+    [data-theme="light"]{
+      --bg-1: #f7f9ff; --bg-2: #eef2ff;
+      --text-1: rgba(10,15,25,0.96); --text-2: rgba(10,15,25,0.74);
+      --link-1: #1f4fff;
+      --glass-bg: rgba(255,255,255,0.65);
+      --glass-border-1: rgba(255,255,255,0.88); --glass-border-2: rgba(10,10,20,0.10);
+      --glass-shadow: 0 18px 40px rgba(13,26,49,0.18), 0 1px 0 rgba(255,255,255,0.40) inset;
+    }
+
+    body {
+      min-height: 100dvh;
+      /* Fixed Background เพื่อให้พื้นหลังนิ่ง สร้างมิติ */
+      background:
+        radial-gradient(1200px 1200px at 20% -10%, rgba(120,119,198,0.15), transparent 50%),
+        radial-gradient(900px 900px at 90% 20%, rgba(0,212,255,0.12), transparent 50%),
+        radial-gradient(700px 700px at 30% 100%, rgba(255,0,153,0.10), transparent 55%),
+        linear-gradient(180deg, var(--bg-1), var(--bg-2));
+      background-attachment: fixed; /* หัวใจสำคัญของความสวย */
+      color: var(--text-1);
+      -webkit-font-smoothing: antialiased;
+      margin: 0; overflow-x: hidden;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    }
+
+    /* Container Standard */
+    .container {
+      max-width: 1200px; margin: 0 auto; padding: 0 20px;
+    }
+
+    /* Glass Effect Base */
+    .glass {
+      position: relative; background: var(--glass-bg);
+      border-radius: var(--radius-2xl); box-shadow: var(--glass-shadow);
+      color: var(--text-1); backdrop-filter: blur(var(--blur)) saturate(var(--sat));
+      -webkit-backdrop-filter: blur(var(--blur)) saturate(var(--sat));
+      border: 1px solid rgba(255,255,255,0.1);
+      transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s ease;
+    }
+    .glass::before {
+      content:""; position:absolute; inset:0; border-radius: inherit;
+      background: var(--top-highlight); pointer-events: none; mix-blend-mode: screen;
+    }
+
+    /* ====== HEADER STYLES (STICKY FIX) ====== */
+    .main-header {
+      position: sticky; /* เกาะติดด้านบน */
+      top: 20px;
+      z-index: 1000; /* อยู่เหนือทุกอย่าง */
+      padding: 0 20px;
+      pointer-events: none; /* เพื่อให้คลิกทะลุพื้นที่ว่างข้างๆ ได้ */
+    }
+    .main-header .container.glass {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 12px 24px;
+      pointer-events: auto; /* เปิดให้คลิกเมนูได้ */
+      background: color-mix(in oklab, var(--glass-bg) 90%, rgba(0,0,0,0.4)); /* เข้มขึ้นนิดหน่อยให้อ่านง่าย */
+    }
+
+    /* Logo & Nav */
+    .logo-link { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--text-1); font-weight: 700; font-size: 1.1rem; }
+    .nav-links { display: flex; gap: 32px; }
+    .nav-links a { text-decoration: none; color: var(--text-2); font-weight: 500; font-size: 0.95rem; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--link-1); }
+    .nav-right { display: flex; align-items: center; gap: 16px; }
+    
+    /* Buttons */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      padding: 12px 32px; border-radius: 100px; font-weight: 600; text-decoration: none;
+      transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, #4f80ff, #1f4fff); color: #fff;
+      box-shadow: 0 8px 20px rgba(31, 79, 255, 0.3);
+    }
+    .btn-primary:hover { transform: translateY(-2px) scale(1.02); box-shadow: 0 12px 30px rgba(31, 79, 255, 0.5); }
+    .btn-secondary {
+      background: rgba(255,255,255,0.08); color: var(--text-1); border: 1px solid rgba(255,255,255,0.1);
+    }
+    .btn-secondary:hover { background: rgba(255,255,255,0.15); transform: translateY(-2px); }
+
+    /* ====== HERO SECTION ====== */
+    .hero-section { 
+      padding-top: 60px; /* ลดระยะห่างเพราะ header ลอยแล้ว */
+      padding-bottom: 80px;
+      position: relative; z-index: 1; 
+    }
+    .hero-content.glass {
+      text-align: center; padding: 60px 40px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+    }
+    .hero-content h1 {
+      font-size: 3.5rem; line-height: 1.1; margin-bottom: 20px;
+      background: linear-gradient(to bottom, #fff, #a5b4fc); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .hero-content p { font-size: 1.2rem; max-width: 600px; margin: 0 auto 40px; color: var(--text-2); }
+    .cta-buttons { display: flex; gap: 16px; justify-content: center; margin-bottom: 50px; }
+
+    /* Slideshow */
+    .slideshow-container {
+      max-width: 800px; margin: 0 auto; aspect-ratio: 16/9; overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .slide { width: 100%; height: 100%; object-fit: cover; display: none; border-radius: inherit; }
+    .slide.active { display: block; animation: fadeEffect 1s; }
+    @keyframes fadeEffect { from {opacity: .4} to {opacity: 1} }
+
+    /* ====== FEATURES & COMMANDS ====== */
+    .content-section { padding: 80px 0; }
+    .section-title { font-size: 2.2rem; text-align: center; margin-bottom: 50px; }
+    
+    .features-grid, .commands-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;
+    }
+    .feature-card.glass, .command-card.glass {
+      padding: 30px; display: flex; flex-direction: column; gap: 10px;
+    }
+    .feature-card h3, .command-card h3 { margin: 0; font-size: 1.4rem; color: #fff; }
+    .command-card h3 span { color: var(--link-1); font-size: 0.9em; opacity: 0.8; margin-left: 8px; }
+    
+    /* ====== SCROLL REVEAL ANIMATION (Key to smooth feel) ====== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px) scale(0.98);
+      transition: all 1s cubic-bezier(0.16, 1, 0.3, 1); /* Easing function แบบ Apple/Game UI */
+    }
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    /* Footer */
+    .footer { text-align: center; padding-bottom: 40px; color: var(--text-2); font-size: 0.9rem; }
+
+    /* Mobile */
+    @media (max-width: 768px) {
+      .hero-content h1 { font-size: 2.2rem; }
+      .nav-links { display: none; } /* ซ่อนเมนูบนมือถือแบบง่ายๆ ก่อน */
+      .main-header { top: 10px; padding: 0 10px; }
+    }
+  </style>
 </head>
 <body>
-  <nav class="navbar">
-    <div class="nav-container">
-      <a href="index.html" class="nav-logo">
-        <img src="https://i.imgur.com/OWQKhLp.jpeg" alt="Nexus Logo">
-        <span>Nexus</span>
-      </a>
-      <ul class="nav-menu" id="navMenu">
-        <li><a href="index.html" class="nav-link" data-i18n="nav.home">หน้าแรก</a></li>
-        <li><a href="commands.html" class="nav-link" data-i18n="nav.commands">คำสั่ง</a></li>
-        <li><a href="shop.html" class="nav-link" data-i18n="nav.shop">ร้านค้า</a></li>
-        <li><a href="terms.html" class="nav-link active" data-i18n="nav.terms">ข้อกำหนด</a></li>
-        <li><a href="privacy.html" class="nav-link" data-i18n="nav.privacy">ความเป็นส่วนตัว</a></li>
-      </ul>
-      <div class="nav-actions">
-        <div class="language-selector">
-          <button class="lang-btn" id="langBtn" type="button">
-            <i class="fas fa-globe"></i>
-            <span id="currentLang">TH</span>
-          </button>
-          <div class="lang-dropdown" id="langDropdown">
-            <button type="button" data-lang="th">🇹🇭 ไทย</button>
-            <button type="button" data-lang="en">🇺🇸 English</button>
-            <button type="button" data-lang="ja">🇯🇵 日本語</button>
-          </div>
-        </div>
-        <a href="https://discord.com/oauth2/authorize?client_id=YOUR_BOT_ID" class="btn btn-primary" data-i18n="nav.invite">เชิญบอท</a>
-      </div>
-      <button class="hamburger" id="hamburger" type="button">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </nav>
 
+  <header class="main-header">
+    <nav class="container glass">
+      <a href="index.html" class="logo-link">
+        <img src="https://i.imgur.com/qqyb5eF.png" alt="XO Arena Logo" width="32" height="32" style="border-radius: 8px;">
+        <span>XO Arena</span>
+      </a>
+      <div class="nav-links">
+        <a href="#features">Features</a>
+        <a href="shop.html" target="_blank">Shop</a>
+        <a href="#commands">Commands</a>
+        <a href="https://discord.gg/nX2AdShqhn" target="_blank">Support</a>
+      </div>
+      <div class="nav-right">
+        <a href="https://discord.com/invite/nX2AdShqhn" target="_blank" class="btn btn-primary" style="padding: 8px 20px; font-size: 0.9rem;">Login</a>
+      </div>
+    </nav>
+  </header>
+   
   <main>
-    <section class="page-header">
+    <section class="hero-section">
+      <div class="container hero-content glass reveal"> <h1 data-lang="hero_title">The New Era of<br>Tic-Tac-Toe</h1>
+        <p data-lang="hero_subtitle">Experience competitive Tic-Tac-Toe on Discord with clean design, ELO ranking system, and seamless gameplay.</p>
+        
+        <div class="cta-buttons">
+          <a href="https://discord.com/oauth2/authorize?client_id=1350821486973288468&permissions=8&integration_type=0&scope=bot+applications.commands" class="btn btn-primary">Add to Discord</a>
+          <a href="https://top.gg/bot/1350821486973288468/vote" target="_blank" class="btn btn-secondary">Vote Bot</a>
+        </div>
+
+        <div class="slideshow-container glass">
+          <img src="https://i.imgur.com/BpPdFST.png" class="slide active">
+          <img src="https://i.imgur.com/EWB4kdG.png" class="slide">
+          <img src="https://i.imgur.com/He3X1u1.png" class="slide">
+        </div>
+      </div>
+    </section>
+    
+    <section id="features" class="content-section">
       <div class="container">
-        <h1 class="animate-fade-up"><i class="fas fa-file-contract"></i> <span data-i18n="terms.title">ข้อกำหนดการใช้งาน</span></h1>
-        <p class="animate-fade-up" data-i18n="terms.lastUpdated">อัปเดตล่าสุด: 29 ธันวาคม 2025</p>
+        <h2 class="section-title reveal">Game Features</h2>
+        <div class="features-grid">
+          <article class="feature-card glass reveal">
+            <h3>🎮 Play Solo or PvP</h3>
+            <p style="color:var(--text-2); margin-top:8px;">Challenge your friends in the server or sharpen your skills against our smart AI bot.</p>
+          </article>
+          <article class="feature-card glass reveal" style="transition-delay: 0.1s;">
+            <h3>🏆 Ranked System</h3>
+            <p style="color:var(--text-2); margin-top:8px;">Climb the global leaderboard. Earn ELO points for every win and become the XO Champion.</p>
+          </article>
+          <article class="feature-card glass reveal" style="transition-delay: 0.2s;">
+            <h3>🌍 Multi-Language</h3>
+            <p style="color:var(--text-2); margin-top:8px;">Fully localized in English, Thai, and Japanese. The bot automatically detects your preference.</p>
+          </article>
+        </div>
       </div>
     </section>
 
-    <section class="legal-section">
+    <section id="commands" class="content-section">
       <div class="container">
-        <div class="legal-content animate-on-scroll">
-          
-          <div class="legal-block">
-            <h2 data-i18n="terms.section1Title">1. การยอมรับข้อกำหนด</h2>
-            <p data-i18n="terms.section1Content">เมื่อคุณใช้งาน Nexus Bot ถือว่าคุณยอมรับข้อกำหนดการใช้งานทั้งหมดนี้ หากไม่ยอมรับ กรุณาหยุดใช้งานบอท</p>
-          </div>
-
-          <div class="legal-block">
-            <h2 data-i18n="terms.section2Title">2. การใช้งานบอท</h2>
-            <p data-i18n="terms.section2Content">คุณตกลงที่จะ:</p>
-            <ul>
-              <li data-i18n="terms.section2Item1">ใช้บอทเพื่อวัตถุประสงค์ที่ถูกกฎหมายเท่านั้น</li>
-              <li data-i18n="terms.section2Item2">ไม่ใช้บอทในทางที่ละเมิดลิขสิทธิ์</li>
-              <li data-i18n="terms.section2Item3">ไม่พยายาม hack หรือทำลายระบบบอท</li>
-              <li data-i18n="terms.section2Item4">ปฏิบัติตามข้อกำหนดของ Discord</li>
-            </ul>
-          </div>
-
-          <div class="legal-block">
-            <h2 data-i18n="terms.section3Title">3. บริการพรีเมียม</h2>
-            <p data-i18n="terms.section3Content">สำหรับบริการพรีเมียม:</p>
-            <ul>
-              <li data-i18n="terms.section3Item1">การชำระเงินเป็นแบบล่วงหน้า</li>
-              <li data-i18n="terms.section3Item2">สิทธิ์จะหมดอายุตามระยะเวลาที่ซื้อ</li>
-              <li data-i18n="terms.section3Item3">ไม่สามารถโอนย้ายไปเซิร์ฟเวอร์อื่นได้</li>
-              <li data-i18n="terms.section3Item4">การคืนเงินพิจารณาเป็นรายกรณี</li>
-            </ul>
-          </div>
-
-          <div class="legal-block">
-            <h2 data-i18n="terms.section4Title">4. ข้อจำกัดความรับผิดชอบ</h2>
-            <p data-i18n="terms.section4Content">บอทให้บริการ "ตามสภาพ" (as is) เราไม่รับประกันว่าบอทจะทำงานได้ตลอดเวลาโดยไม่มีข้อผิดพลาด</p>
-          </div>
-
-          <div class="legal-block">
-            <h2 data-i18n="terms.section5Title">5. การระงับบริการ</h2>
-            <p data-i18n="terms.section5Content">เราขอสงวนสิทธิ์ในการระงับการเข้าถึงบอทของคุณโดยไม่ต้องแจ้งล่วงหน้า หากคุณละเมิดข้อกำหนดใดๆ</p>
-          </div>
-
-          <div class="legal-block">
-            <h2 data-i18n="terms.section6Title">6. การเปลี่ยนแปลงข้อกำหนด</h2>
-            <p data-i18n="terms.section6Content">เราอาจเปลี่ยนแปลงข้อกำหนดได้ตลอดเวลา การใช้งานต่อหลังจากมีการเปลี่ยนแปลงถือว่าคุณยอมรับข้อกำหนดใหม่</p>
-          </div>
-
-          <div class="legal-block">
-            <h2 data-i18n="terms.section7Title">7. ติดต่อเรา</h2>
-            <p data-i18n="terms.section7Content">หากมีคำถามเกี่ยวกับข้อกำหนดการใช้งาน ติดต่อเราได้ที่ Discord Server</p>
-            <a href="https://discord.gg/YOUR_SERVER" class="btn btn-primary">
-              <i class="fab fa-discord"></i>
-              <span data-i18n="terms.contactUs">ติดต่อเรา</span>
-            </a>
-          </div>
-
+        <h2 class="section-title reveal">Commands List</h2>
+        <div class="commands-grid">
+          <div class="command-card glass reveal"><h3>/play <span>@user</span></h3><p style="color:var(--text-2);">Start a match with a friend.</p></div>
+          <div class="command-card glass reveal" style="transition-delay: 0.1s;"><h3>/playbot</h3><p style="color:var(--text-2);">Play against the AI.</p></div>
+          <div class="command-card glass reveal" style="transition-delay: 0.2s;"><h3>/stats</h3><p style="color:var(--text-2);">Check your wins and rank.</p></div>
+          <div class="command-card glass reveal"><h3>/leaderboard</h3><p style="color:var(--text-2);">See top players.</p></div>
+          <div class="command-card glass reveal" style="transition-delay: 0.1s;"><h3>/profile</h3><p style="color:var(--text-2);">Customize your card.</p></div>
+          <div class="command-card glass reveal" style="transition-delay: 0.2s;"><h3>/help</h3><p style="color:var(--text-2);">Show all commands.</p></div>
         </div>
       </div>
     </section>
   </main>
 
-  <div id="footer-slot"></div>
+  <footer class="footer">
+    <div class="container glass reveal">
+      <p>© 2026 XO Arena Bot. All rights reserved.</p>
+    </div>
+  </footer>
 
-  <script src="js/i18n.js"></script>
-  <script src="js/main.js"></script>
-  
+  <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script> 
+
   <script>
-    // Script สำหรับโหลด footer.html
-    fetch('footer.html')
-      .then(response => response.text())
-      .then(html => {
-        document.getElementById('footer-slot').innerHTML = html;
-        
-        // เรียกใช้ฟังก์ชันแปลภาษาหลังจาก Footer โหลดเสร็จ (ถ้ามี)
-        if (typeof applyTranslations === 'function') {
-          const lang = localStorage.getItem('nexus-language') || 'th';
-          applyTranslations(lang);
+    // --- 1. Initialize Smooth Scroll (Lenis) ---
+    // ตัวนี้จะทำให้การเลื่อนเมาส์มีความหน่วง (Inertia) เหมือนเว็บเกมแพงๆ
+    const lenis = new Lenis({
+      duration: 1.2, // ความช้าในการหยุด (ยิ่งเยอะยิ่งลื่น)
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Physics easing
+      smooth: true,
+    });
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+
+    // --- 2. Scroll Reveal Animation ---
+    // โค้ดนี้จะคอยดูว่า Element ไหนที่มี class "reveal" โผล่เข้ามาในจอ แล้วเติม class "active" ให้
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.1 // โผล่มา 10% ให้ทำงานเลย
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+          // observer.unobserve(entry.target); // ถ้าอยากให้เล่นแค่รอบเดียว ให้เอา comment ออก
         }
-      })
-      .catch(error => console.error('Error loading footer:', error));
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.reveal').forEach(el => {
+      observer.observe(el);
+    });
+
+    // --- 3. Simple Slideshow ---
+    let slideIndex = 0;
+    const slides = document.querySelectorAll('.slide');
+    
+    function showSlides() {
+      if(slides.length === 0) return;
+      slides.forEach(slide => slide.classList.remove('active'));
+      slideIndex++;
+      if (slideIndex > slides.length) {slideIndex = 1}
+      slides[slideIndex-1].classList.add('active');
+      setTimeout(showSlides, 4000); // Change image every 4 seconds
+    }
+    showSlides();
   </script>
 </body>
 </html>
