@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="th">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Privacy Policy - Nexus Bot</title>
+  <link rel="icon" href="https://i.imgur.com/OWQKhLp.jpeg" type="image/jpeg">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -25,8 +26,7 @@
       <div class="nav-actions">
         <div class="language-selector">
           <button class="lang-btn" id="langBtn" type="button">
-            <i class="fas fa-globe"></i>
-            <span id="currentLang">TH</span>
+            <i class="fas fa-globe"></i><span id="currentLang">TH</span>
           </button>
           <div class="lang-dropdown" id="langDropdown">
             <button type="button" data-lang="th">🇹🇭 ไทย</button>
@@ -35,95 +35,93 @@
           </div>
         </div>
         <a href="https://discord.com/oauth2/authorize?client_id=YOUR_BOT_ID" class="btn btn-primary" data-i18n="nav.invite">เชิญบอท</a>
+        <button class="hamburger" id="hamburger" type="button">
+          <span></span><span></span><span></span>
+        </button>
       </div>
-      <button class="hamburger" id="hamburger" type="button">
-        <span></span><span></span><span></span>
-      </button>
     </div>
   </nav>
 
   <main>
     <section class="page-header">
       <div class="container">
-        <h1 class="animate-fade-up"><i class="fas fa-shield-alt"></i> <span data-i18n="privacy. title">นโยบายความเป็นส่วนตัว</span></h1>
+        <h1 class="animate-fade-up"><i class="fas fa-shield-alt"></i> <span data-i18n="privacy.title">นโยบายความเป็นส่วนตัว</span></h1>
         <p class="animate-fade-up" data-i18n="privacy.lastUpdated">อัปเดตล่าสุด: 29 ธันวาคม 2025</p>
       </div>
     </section>
 
     <section class="legal-section">
-      <div class="container">
-        <div class="legal-content animate-on-scroll">
-          <div class="legal-block">
-            <h2 data-i18n="privacy.section1Title">1. ข้อมูลที่เราเก็บรวบรวม</h2>
-            <p data-i18n="privacy.section1Content">เราเก็บรวบรวมข้อมูลดังต่อไปนี้: </p>
-            <ul>
-              <li data-i18n="privacy.section1Item1"><strong>Server ID:</strong> เพื่อจัดเก็บการตั้งค่าของเซิร์ฟเวอร์</li>
-              <li data-i18n="privacy.section1Item2"><strong>User ID:</strong> เพื่อระบุตัวตนผู้ใช้งาน Premium</li>
-              <li data-i18n="privacy. section1Item3"><strong>การตั้งค่าภาษา:</strong> เพื่อแสดงผลภาษาที่ถูกต้อง</li>
-              <li data-i18n="privacy.section1Item4"><strong>ประวัติคำสั่ง:</strong> เพื่อปรับปรุงบริการ (เก็บชั่วคราว)</li>
-            </ul>
-          </div>
+      <div class="container legal-content animate-on-scroll">
+        <div class="legal-block">
+          <h2 data-i18n="privacy.section1Title">1. ข้อมูลที่เราเก็บรวบรวม</h2>
+          <p data-i18n="privacy.section1Content">เราเก็บรวบรวมข้อมูลดังต่อไปนี้:</p>
+          <ul>
+            <li data-i18n="privacy.section1Item1"><strong>Server ID:</strong> เพื่อจัดเก็บการตั้งค่าของเซิร์ฟเวอร์</li>
+            <li data-i18n="privacy.section1Item2"><strong>User ID:</strong> เพื่อระบุตัวตนผู้ใช้งาน Premium</li>
+            <li data-i18n="privacy.section1Item3"><strong>การตั้งค่าภาษา:</strong> เพื่อแสดงผลภาษาที่ถูกต้อง</li>
+            <li data-i18n="privacy.section1Item4"><strong>ประวัติคำสั่ง:</strong> เพื่อปรับปรุงบริการ (เก็บชั่วคราว)</li>
+          </ul>
+        </div>
 
-          <div class="legal-block">
-            <h2 data-i18n="privacy.section2Title">2. ข้อมูลที่เราไม่เก็บ</h2>
-            <p data-i18n="privacy.section2Content">เราไม่เก็บรวบรวมข้อมูลเหล่านี้: </p>
-            <ul>
-              <li data-i18n="privacy.section2Item1">ข้อความส่วนตัวหรือข้อความในช่อง</li>
-              <li data-i18n="privacy.section2Item2">ข้อมูลเสียงหรือการสนทนา</li>
-              <li data-i18n="privacy. section2Item3">รหัสผ่านหรือข้อมูลทางการเงิน</li>
-              <li data-i18n="privacy.section2Item4">ข้อมูลส่วนบุคคลอื่นๆ</li>
-            </ul>
-          </div>
+        <div class="legal-block">
+          <h2 data-i18n="privacy.section2Title">2. ข้อมูลที่เราไม่เก็บ</h2>
+          <p data-i18n="privacy.section2Content">เราไม่เก็บรวบรวมข้อมูลเหล่านี้:</p>
+          <ul>
+            <li data-i18n="privacy.section2Item1">ข้อความส่วนตัวหรือข้อความในช่อง</li>
+            <li data-i18n="privacy.section2Item2">ข้อมูลเสียงหรือการสนทนา</li>
+            <li data-i18n="privacy.section2Item3">รหัสผ่านหรือข้อมูลทางการเงิน</li>
+            <li data-i18n="privacy.section2Item4">ข้อมูลส่วนบุคคลอื่นๆ</li>
+          </ul>
+        </div>
 
-          <div class="legal-block">
-            <h2 data-i18n="privacy.section3Title">3. การใช้ข้อมูล</h2>
-            <p data-i18n="privacy.section3Content">เราใช้ข้อมูลที่เก็บรวบรวมเพื่อ:</p>
-            <ul>
-              <li data-i18n="privacy. section3Item1">ให้บริการบอทตามที่กำหนด</li>
-              <li data-i18n="privacy. section3Item2">ปรับปรุงและพัฒนาบริการ</li>
-              <li data-i18n="privacy.section3Item3">จัดการสิทธิ์ Premium</li>
-              <li data-i18n="privacy. section3Item4">แก้ไขปัญหาทางเทคนิค</li>
-            </ul>
-          </div>
+        <div class="legal-block">
+          <h2 data-i18n="privacy.section3Title">3. การใช้ข้อมูล</h2>
+          <p data-i18n="privacy.section3Content">เราใช้ข้อมูลที่เก็บรวบรวมเพื่อ:</p>
+          <ul>
+            <li data-i18n="privacy.section3Item1">ให้บริการบอทตามที่กำหนด</li>
+            <li data-i18n="privacy.section3Item2">ปรับปรุงและพัฒนาบริการ</li>
+            <li data-i18n="privacy.section3Item3">จัดการสิทธิ์ Premium</li>
+            <li data-i18n="privacy.section3Item4">แก้ไขปัญหาทางเทคนิค</li>
+          </ul>
+        </div>
 
-          <div class="legal-block">
-            <h2 data-i18n="privacy.section4Title">4. การเก็บรักษาข้อมูล</h2>
-            <p data-i18n="privacy.section4Content">ข้อมูลการตั้งค่าจะถูกเก็บไว้ตราบเท่าที่บอทยังอยู่ในเซิร์ฟเวอร์ของคุณ เมื่อบอทถูกลบออก ข้อมูลจะถูกลบภายใน 30 วัน</p>
-          </div>
+        <div class="legal-block">
+          <h2 data-i18n="privacy.section4Title">4. การเก็บรักษาข้อมูล</h2>
+          <p data-i18n="privacy.section4Content">ข้อมูลการตั้งค่าจะถูกเก็บไว้ตราบเท่าที่...</p>
+        </div>
 
-          <div class="legal-block">
-            <h2 data-i18n="privacy.section5Title">5. การแชร์ข้อมูล</h2>
-            <p data-i18n="privacy. section5Content">เราไม่ขาย ให้เช่า หรือแชร์ข้อมูลของคุณกับบุคคลที่สาม ยกเว้นในกรณีที่กฎหมายกำหนด</p>
-          </div>
+        <div class="legal-block">
+          <h2 data-i18n="privacy.section5Title">5. การแชร์ข้อมูล</h2>
+          <p data-i18n="privacy.section5Content">เราไม่ขาย ให้เช่า...</p>
+        </div>
 
-          <div class="legal-block">
-            <h2 data-i18n="privacy. section6Title">6. สิทธิ์ของคุณ</h2>
-            <p data-i18n="privacy.section6Content">คุณมีสิทธิ์: </p>
-            <ul>
-              <li data-i18n="privacy.section6Item1">ขอดูข้อมูลที่เราเก็บเกี่ยวกับคุณ</li>
-              <li data-i18n="privacy. section6Item2">ขอให้ลบข้อมูลของคุณ</li>
-              <li data-i18n="privacy.section6Item3">ขอแก้ไขข้อมูลที่ไม่ถูกต้อง</li>
-            </ul>
-          </div>
+        <div class="legal-block">
+          <h2 data-i18n="privacy.section6Title">6. สิทธิ์ของคุณ</h2>
+          <p data-i18n="privacy.section6Content">คุณมีสิทธิ์:</p>
+          <ul>
+            <li data-i18n="privacy.section6Item1">ขอดูข้อมูลที่เราเก็บเกี่ยวกับคุณ</li>
+            <li data-i18n="privacy.section6Item2">ขอให้ลบข้อมูลของคุณ</li>
+            <li data-i18n="privacy.section6Item3">ขอแก้ไขข้อมูลที่ไม่ถูกต้อง</li>
+          </ul>
+        </div>
 
-          <div class="legal-block">
-            <h2 data-i18n="privacy.section7Title">7. ความปลอดภัย</h2>
-            <p data-i18n="privacy.section7Content">เราใช้มาตรการรักษาความปลอดภัยที่เหมาะสมเพื่อปกป้องข้อมูลของคุณ รวมถึงการเข้ารหัสและการจำกัดการเข้าถึง</p>
-          </div>
+        <div class="legal-block">
+          <h2 data-i18n="privacy.section7Title">7. ความปลอดภัย</h2>
+          <p data-i18n="privacy.section7Content">เราใช้มาตรการรักษาความปลอดภัย...</p>
+        </div>
 
-          <div class="legal-block">
-            <h2 data-i18n="privacy.section8Title">8. การเปลี่ยนแปลงนโยบาย</h2>
-            <p data-i18n="privacy.section8Content">เราอาจอัปเดตนโยบายนี้เป็นครั้งคราว การเปลี่ยนแปลงจะมีผลเมื่อประกาศบนเว็บไซต์นี้</p>
-          </div>
+        <div class="legal-block">
+          <h2 data-i18n="privacy.section8Title">8. การเปลี่ยนแปลงนโยบาย</h2>
+          <p data-i18n="privacy.section8Content">เราอาจอัปเดตนโยบายนี้เป็นครั้งคราว...</p>
+        </div>
 
-          <div class="legal-block">
-            <h2 data-i18n="privacy.section9Title">9. ติดต่อเรา</h2>
-            <p data-i18n="privacy.section9Content">หากมีคำถามเกี่ยวกับนโยบายความเป็นส่วนตัว ติดต่อเราได้ที่ Discord Server</p>
-            <a href="https://discord.gg/YOUR_SERVER" class="btn btn-primary">
-              <i class="fab fa-discord"></i>
-              <span data-i18n="privacy. contactUs">ติดต่อเรา</span>
-            </a>
-          </div>
+        <div class="legal-block">
+          <h2 data-i18n="privacy.section9Title">9. ติดต่อเรา</h2>
+          <p data-i18n="privacy.section9Content">หากมีคำถามเกี่ยวกับนโยบายความเป็นส่วนตัว...</p>
+          <a href="https://discord.gg/YOUR_SERVER" class="btn btn-primary" style="background: linear-gradient(135deg, #5865F2 0%, #00D4AA 100%) !important; color: white !important; border: none !important; margin-top: 15px;">
+            <i class="fab fa-discord"></i>
+            <span data-i18n="privacy.contactUs">ติดต่อเรา</span>
+          </a>
         </div>
       </div>
     </section>
@@ -133,11 +131,11 @@
 
   <script>
     fetch('footer.html')
-      .then(function(response) { return response.text(); })
-      .then(function(html) {
+      .then(r => r.text())
+      .then(html => {
         document.getElementById('footer-slot').innerHTML = html;
         if (typeof applyTranslations === 'function') {
-          var lang = localStorage.getItem('nexus-language') || 'th';
+          const lang = localStorage.getItem('nexus-language') || 'th';
           applyTranslations(lang);
         }
       });
